@@ -1,4 +1,15 @@
+############### Version of Docker Compose file format ################
+# indicates the version of the Docker Compose file format being used
 version: '3'
+######################################################################
+
+############### YAML anchor ################
+
+# build: Specifies the build context and Dockerfile for building the custom Airflow image.
+# image: Specifies the custom Airflow image to use.
+# env_file: Specifies the environment file to use for Airflow.
+# volumes: Mounts directories from the host machine to directories within the Airflow container.
+# depends_on: Specifies that the Airflow services depend on the PostgreSQL and Redis services.
 
 x-airflow-common:
   &airflow-common
@@ -23,6 +34,17 @@ x-airflow-common:
   depends_on:
     - postgres
     - redis
+######################################################################
+
+############### Services ################
+# This section defines various services using Docker images. Each service represents a container. Services include:
+
+# postgres: PostgreSQL database container with environment variables for user, password, database name, and port mapping.
+# redis: Redis database container with port mapping.
+# airflow-init: Initializes Airflow by installing dependencies, initializing the database, and starting Airflow.
+# airflow-webserver: Airflow webserver container with port mapping.
+# airflow-scheduler: Airflow scheduler container.
+# airflow-worker: Airflow worker container.
 
 services:
   postgrres:
@@ -60,3 +82,4 @@ services:
     <<: *airflow-common
     command: celery worker
 
+######################################################################
