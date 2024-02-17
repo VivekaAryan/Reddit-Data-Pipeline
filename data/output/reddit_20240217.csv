@@ -1,0 +1,301 @@
+id,title,selftext,score,num_comments,author,created_utc,url,upvote_ratio,over_18,edited,spoiler,stickied
+1at7mdg,Update to interview posts,"After careful consideration and listening to your feedback, we've decided to no longer allow interview-related posts because they take away focus from our community's main purpose.
+
+In the past, although they usually weren't directly related to data engineering we've allowed interview posts like ""What are interviews like at XYZ company?"" or ""What should I prepare/study for XYZ position?""
+
+These questions are more often than not either too difficult to meaningfully answer or have already been answered many times. Similarly to resume reviews, we will no longer be allowing these types of posts and instead point users to other resources that are better suited and focused on answering those questions like Glassdoor and Blind.
+
+Thank you again to everyone who has been providing constructive feedback on this topic. We know it may feel frustrating to see the same type of content and it may not feel like progress is happening but it just takes time to carefully review these changes and hear all opinions. We appreciate your patience and for helping shape this community.",35,6,AutoModerator,2024-02-17 17:44:48,https://www.reddit.com/r/dataengineering/comments/1at7mdg/update_to_interview_posts/,0,False,False,False,True
+1at0gkz,Geoglify: now supports visualizing geo data through patterns,"I updated Geoglify on GitHub. It transforms real-world geospatial data into patterns or shapes. Currently supports 40 patterns, but can load more.
+
+https://github.com/geoglify/geoglify",18,6,leoneljdias,2024-02-17 12:05:29,https://v.redd.it/3ryx4ffyy4jc1,1,False,False,False,False
+1at32dw,Do you use surrogate key or composite key in fact tables?,"When do you use which one?
+
+Which is better?
+
+Using auto-generating PK:
+
+`CREATE TABLE fact_orderlines (`  
+`order_id INTEGER IDENTITY(1,1) PRIMARY KEY, -- SERIAL not supported use IDENTITY instead`  
+`product_id INTEGER,`  
+`category_id INTEGER,`  
+`date_id INTEGER,`  
+`market_id INTEGER,`  
+`customer_id INTEGER,`  
+`amount DECIMAL(10,2)  -- MONEY data type is not supported, use DECIMAL instead`  
+`);`
+
+Or using a composite key:
+
+`ALTER TABLE fact_orderlines ADD CONSTRAINT pk_fact_orderlines PRIMARY KEY (product_id, category_id, date_id, market_id, customer_id);`",16,20,rental_car_abuse,2024-02-17 14:21:39,https://www.reddit.com/r/dataengineering/comments/1at32dw/do_you_use_surrogate_key_or_composite_key_in_fact/,0,False,False,False,False
+1asxqdx,Blog 2 - Learning SQL,"I will be focusing on SQL as the first tech stack because SQL is the core of DE and anything related to data. This blog will cover what you need to learn, the resources to learn as well as where you need to practice it.
+
+**Step 1**: If you are completely new to SQL and want to understand the basics you can [refer](https://www.w3schools.com/sql/). Next refer [this playlist](https://www.youtube.com/watch?v=7GVFYt6_ZFM&list=PL08903FB7ACA1C2FB) to help you in understanding things like select, from, where, joins, indexes, window functions, stored procedures, functions, triggers.
+
+**Step 2**: Next, you need to understand how the execution order of SQL is, as long as you do not understand the flow of your data in your queries you will not be able to visualize how to write queries or at least efficient ones. [This video](https://youtu.be/uEmAvzuA7u8) should help you with that.
+
+**Step 3**: I feel that you should understand how queries are written, what should be the approach to solve a problem and for this you need to develop an intuition. I will recommend first going through the channel I mentioned in Step 2, [link](https://www.youtube.com/@ankitbansal6).
+
+He has 4 playlists, which has really taken my query writing skills to next level. I will recommend watching them in below order:
+
+1. [SQL Tips and Tricks](https://www.youtube.com/watch?v=4xPxGX4mfb4&list=PLBTZqjSKn0IcR6DhoLUibOG8frnWbZdSH)
+2. [SQL Medium Complex Interview Problems](https://www.youtube.com/watch?v=dOLBRfwzYcU&list=PLBTZqjSKn0IfuIqbMIqzS-waofsPHMS0E)
+3. [Leetcode SQL Hard Problems](https://www.youtube.com/watch?v=tDfAo7uw-3w&list=PLBTZqjSKn0IfULLRo9Tm4lESxYMAG7fUQ)
+4. [Complex SQL questions for Interview Preparation](https://www.youtube.com/watch?v=qyAgWL066Vo&list=PLBTZqjSKn0IeKBQDjLmzisazhqQy4iGkb)
+
+I will recommend after watching the above playlists, to get your hands dirty. So far you have gained all the theoretical knowledge required now you need to start practicing it on a daily basis. The channel has the DDL and DML statements for almost all his videos in the description, if you do not have a local setup, you can use [this](https://sqliteonline.com/) and run the commands over there and start writing queries.
+
+Now that you are through his playlists twice the questions will feel repetitive and you have gained the querying experience needed to handle problems on your own which brings us to step 4.
+
+**Step 4**: Start Practicing.
+
+Learning by just watching will help clear your concepts but you will need to continuously apply them to be really comfortable with it and SQL query writing practice should be done daily even if it's just 1 or 2 problems everyday. After you are done practicing the Ankit Bansal playlists you can start with below:
+
+1. Hackerrank.
+2. Go to leetcode and solve all the free questions from easy, medium and then hard level.
+3. Stratascratch has good questions so you can solve the free questions over there too.
+
+By now, you should be really good at writing complex queries. If you have followed properly then by step 3 itself you should be good at joins, windows functions, group by, cte, etc.
+
+**Step 5**: Understand some concepts mentioned below.
+
+You can do this step in parallel with other steps. Below are some of the concepts you need to be aware about and I will be adding pointers and updating links if and as I find them.
+
+1. SQL Indexes, types, uses
+2. [SCD Types](https://learn.microsoft.com/en-us/training/modules/populate-slowly-changing-dimensions-azure-synapse-analytics-pipelines/3-choose-between-dimension-types)
+3. OLAP vs OLTP
+4. Normalization vs Denormalization
+5. Normalization Forms
+6. Data Warehouse Concepts \[[English](https://youtu.be/h0j0QN2b57M?list=PL_c9BZzLwBRK0Pc28IdvPQizD2mJlgoID), [Hindi](https://www.youtube.com/watch?v=UiTvqSd52ak&list=PLTsNSGeIpGnGP8A74Ie1PgqHhewsqD3fv)\]
+
+[Link to Table of Content Post](https://www.reddit.com/r/dataengineering/comments/1arpamc/guiding_others_to_transition_into_azure_de_role/?utm_source=share&utm_medium=web2x&context=3)
+
+Thank You..!! Please do let me know in comments if you liked the blog, if there is anything else you want to ask related to SQL or if there are any constructive criticism you would like to give.
+
+Note: This blog has focused on relational SQL, NoSQL is something I was aware of on a very very high level but I was honest with interviewers and told them I had no experience with NoSQL and they were okay with it (most did not bother asking about it anyways).",14,2,Vikinghehe,2024-02-17 09:05:09,https://www.reddit.com/r/dataengineering/comments/1asxqdx/blog_2_learning_sql/,0,False,False,False,False
+1asw21j,Australia data engineering salary,"Hi everyone!
+
+Been working as a data engineer in the APS for a year now, getting about 79k AUD + 15% super (so about 90k total compensation).
+
+My question is, should I be looking to switch to the private sector and what kind of salary would i realistically be looking at? Or, should I stay in my current position and gain more experience before thinking of moving to the private sector. Located in Perth.
+
+Thanks!",12,5,Agile-z,2024-02-17 07:12:44,https://www.reddit.com/r/dataengineering/comments/1asw21j/australia_data_engineering_salary/,0,False,False,False,False
+1ast2g5,DP-600 vs DP-203: Which one would be better choice? Need advice.,"I am thinking about doing either the new DP-600 (Fabric Analytics Engineer) or DP-203 (Azure Data Engineer). Would the DP-600 exam be a good choice since Microsoft seems to be trying to push Fabric over Synapse? Or would the DP-203 be a better choice? Would like to hear your opinions.
+",12,4,bass581,2024-02-17 04:17:08,https://www.reddit.com/r/dataengineering/comments/1ast2g5/dp600_vs_dp203_which_one_would_be_better_choice/,1,False,False,False,False
+1asq126,Data Modeling: What logic to put in DBT vs in BI Layer?,"These are some questions that I have been thinking about for some time now. This all centers around what to do in the data warehouse vs what to do in the BI Layer. For the BI layer, I am sure this applies to all BI tools but I am primarily referring to PBI.   
+**I am giving very simple examples here but in reality, the data has many granularities, more metrics, and more reports need to be built.**
+
+&#x200B;
+
+1. Do you create YRAGO, 2YRAGO metrics in DBT?
+   1. Let's say you have a table of Date, Item, and Sale Amount (*Appendix Table A*). Would it make sense to create another column for YRAGO sale amount for that item on that date? I typically do not like to do that and have it done in the PBI layer. What are your thoughts?
+2. Do you create aggregate tables for each major granularity?
+   1. Lets say you have a table of Date, Store, Item, and Sale Amount (*Appendix Table B*). You need to create 3 reports for Sales by Item, Store, and Date. Would you make views/tables that aggregate to each granularity?
+
+**Things I like to optimize for:**
+
+\- Keeping the BI layer as light as possible, reusability in the DW, not keeping logic in the BI layer.
+
+&#x200B;
+
+Appendix:
+
+Table A:
+
+|Date|Item ID|Sale Amount|
+|:-|:-|:-|
+|1/1/2023|a|100|
+|1/1/2023|b|50|
+|1/2/2023|a|76|
+
+Table B:
+
+|Date|Store ID|Item ID|Sale Amount|
+|:-|:-|:-|:-|
+|1/1/2023|z|a|100|
+|1/1/2023|q|b|50|
+|1/2/2023|w|a|76|
+
+&#x200B;",11,9,anon_data_person,2024-02-17 01:44:37,https://www.reddit.com/r/dataengineering/comments/1asq126/data_modeling_what_logic_to_put_in_dbt_vs_in_bi/,0,False,False,False,False
+1at1rel,"Beginner Question - Use cases of Spark if we are on Snowflake, AWS","Hello 
+
+I am confused about this technology. 
+
+We are a heavy snowflake and AWS shop. 
+
+What are some use cases of Spark on such an org if any?  Are there things that could be done nor efficiently or made us more productive?
+
+I understand it’s hard to give advices without the specifics. Please ask me questions and I’ll try to answer without getting intro trouble at work. 
+
+Thank you. ",11,5,20231027,2024-02-17 13:17:14,https://www.reddit.com/r/dataengineering/comments/1at1rel/beginner_question_use_cases_of_spark_if_we_are_on/,0,False,False,False,False
+1at2ir9,Favourite technical books,"Howdy. Does anybody have any technical books related to DE that they particularly like?
+
+For me, it’s Data Pipelines with Apache Airflow; Docker Up and Running; Learning Spark; and Kafka: The Definitive Guide.",7,4,Low-Sandwich-7607,2024-02-17 13:55:35,https://www.reddit.com/r/dataengineering/comments/1at2ir9/favourite_technical_books/,0,False,False,False,False
+1aspdhk,Need help deciding an OLAP db,"Im looking to implement an OLAP db in my company. The idea is to pull data from our MongoDB, ETL that shit with mage.ai and push it to an OLAP db where BI can consume it.
+
+Data is not really big. Less than 1GB total. May be bigger in the future but not by much.
+
+Which provider would fit given the costs and without being overkill? Should I just stick with BigQuery?",8,16,RedBlueWhiteBlack,2024-02-17 01:13:41,https://www.reddit.com/r/dataengineering/comments/1aspdhk/need_help_deciding_an_olap_db/,1,False,False,False,False
+1at0xbv,Deploying Clickhouse in production - what to watch out for,"Hi,
+
+&#x200B;
+
+I am deploying clickhouse in production, total keeper 2 nodes, clickhouse 3 nodes. Read a lot here about problems scaling it on production, shards and configuration management.  
+
+
+Would love to hear about what to watch out for and any tips.  
+
+
+Current infra is aws and clickhouse will be deployed inside private vpc.  Using  
+1. Clickhouse Keeper (instead of zookeeper) (with docker) - 2 nodes - t2.medium  
+2. Clickhouse docker images with attached EBS volume (in case to scale or add extra storage if needed ) 3 nodes - t3.xlarge - 500GB volume each  
+3. Grafana for monitoring.  
+4. Looking at ELB for connecting to kafka for data pipeline  
+5. Openssl for certificates for hosts for clickhouse  
+Thanks",6,3,abhishekgahlot,2024-02-17 12:31:37,https://www.reddit.com/r/dataengineering/comments/1at0xbv/deploying_clickhouse_in_production_what_to_watch/,1,False,False,False,False
+1at76os,Airbyte and similar EL tools,"I recently shared my thoughts in a previous discussion where there was some dissatisfaction mentioned regarding Airbyte. Although I haven't personally used Airbyte, on paper, it seems ideal.
+
+It offers a unified method for establishing your EL (Extract and Load) pipeline, recognizing that the majority of these pipelines—connecting to standard data sources like databases, object storage, APIs, etc.—follow a similar pattern with either scheduled batch or streaming workflows.
+
+Airbyte appears to excel in this area, and the documentation suggests that setting up a completely new connector is relatively straightforward.
+
+I'm eager to learn about others' experiences with Airbyte.
+
+Additionally, I'm exploring other tools in the market. I'm in search of a solution that can seamlessly integrate data into my lakehouse, with the following criteria:
+
+- Open-source and capable of being hosted independently (I don’t want to pay for it)
+- The ability to configure EL connections between sources and destinations as code, preferably in a declarative manner using Infrastructure as Code (IaC) tools like Terraform or Pulumi
+- The pipeline should automatically log crucial metadata, including extraction timestamps and file sizes etc.
+
+Historically, I've set up these extraction processes manually using self-hosted servers or lambda functions. However, the complexity tends to increase with the number of connections. Hence, I'm drawn to the concept of EL tools that offer a standardized approach to configuring these connections.",6,13,caksters,2024-02-17 17:26:12,https://www.reddit.com/r/dataengineering/comments/1at76os/airbyte_and_similar_el_tools/,0,False,False,False,False
+1asnwgy,Encryption micro service?,"I feel like I may be going down the wrong route to I'm here to ask. I have a lot of situations where I'd like to encrypt a file before storing it on s3. I went ahead and wrote a fastapi endpoint that takes a file upload and a recipient email then returns an encrypted file. This would be available internally as a service over https. 
+
+Is there an easier way of centrally managing keys / encryption?",4,2,Foodwithfloyd,2024-02-17 00:07:21,https://www.reddit.com/r/dataengineering/comments/1asnwgy/encryption_micro_service/,0,False,False,False,False
+1atbt4x,Any video course equivalent of the fundamentals of data engineering out there?,"I'm a BI developer looking to upgrade by solidifying my ETL/Pipelining skills. I read many times that a great start would be to read the book Fundamentals of Data Engineering, but I happen to absorb concepts better through video. Any course equivalent that you recommend?",5,7,Alno1,2024-02-17 20:43:02,https://www.reddit.com/r/dataengineering/comments/1atbt4x/any_video_course_equivalent_of_the_fundamentals/,0,False,False,False,False
+1at5kpz,What are some good sources to learn Scala and Spark?,Title,4,2,Present-Yogurt-1998,2024-02-17 16:17:27,https://www.reddit.com/r/dataengineering/comments/1at5kpz/what_are_some_good_sources_to_learn_scala_and/,0,False,False,False,False
+1at8bft,About iceberg tables,"My company will change ERP systems net year (after 20 years). Together with this change will come a change in data architecture. Where previously i'd manage an azure stack, the new stack will be AWS+Snowflake. A big requirement of the stack is to be able to time travel. Therefor they want to turn a daily full load into iceberg tables and do a catalog integration with snowflake.
+
+As I have some experience with delta lakes, I had a discussion with our data architect. My argument was that trying to use iceberg tables without any maintenance for timetraveling lets say 5 years would probably be terrible for storage cost and performance, if not impossible. He said that it was no problem whatsoever.
+
+Can iceberg tables be used to timetravel without limit? If so what would be the implication on storage volumes over time? Is there a better solution?",3,7,Annual_Scratch7181,2024-02-17 18:15:02,https://www.reddit.com/r/dataengineering/comments/1at8bft/about_iceberg_tables/,1,False,False,False,False
+1aswgfv,Data Engineering - First Contact,"Sometime back, I came across this [post](https://www.reddit.com/r/dataengineering/comments/1apkw7y/resources_for_data_modeling_and_building_a_data/). I did mention in the [reply](https://www.reddit.com/r/dataengineering/comments/1apkw7y/comment/kq74hfy/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button) that I had an unfinished blog on DE and would try to complete it.
+
+So I started to write and instead of a blog, I decided to make it an open book.
+
+[https://paperplaneflyr.gitbook.io/data-engineering-first-contact/](https://paperplaneflyr.gitbook.io/data-engineering-first-contact/)
+
+My agenda was to make this for anyone who is just starting in Data Engineering, a seasoned software developer who was pushed into Data Engineering, or students who want to become Data Engineers.
+
+You may find tons of information on the internet about DE, but how much of it applies to your project? Of course, there is always a give and take of tools and methods but at the core, some principles remain the same.
+
+This book is about those principles and a bit on the tools. Tools always have documentation, principles are created with experience.
+
+It's not complete, suggestions are welcome. ",3,1,Paperplaneflyr,2024-02-17 07:39:01,https://www.reddit.com/r/dataengineering/comments/1aswgfv/data_engineering_first_contact/,1,False,False,False,False
+1atcwjw,Transitioning from Data Engineering in Mexico to the US Job Market,"Hi everyone,
+
+I recently graduated with a degree in Software Engineering from a top university in Mexico, and I've been working as a data engineer for three years now at a transitional company in my city. My ultimate career goal is to break into the US job market, either by relocating to a city in the US or by working remotely for a US-based company from Mexico.
+
+I'm eager to enhance my career prospects, and I'm considering pursuing a master's degree in either Data Science or Statistics in the US. However, I'm torn between whether this would be a worthwhile investment of both time and money, or if I could achieve my goals through self-study and professional development.
+
+What are your thoughts on this? Do you believe pursuing a master's degree in the US would significantly improve my chances of entering the US job market, or would it be more beneficial to pursue other avenues of skill development independently?
+
+I'd greatly appreciate any insights or advice you can offer. Thank you in advance for your help!",0,4,josegzza,2024-02-17 21:31:17,https://www.reddit.com/r/dataengineering/comments/1atcwjw/transitioning_from_data_engineering_in_mexico_to/,0,False,False,False,False
+1at262v,Best way to ingest data that is based on data already in the database?,"I’ve recently been hired to be the sole data engineer for a public database that has built up a lot of tech debt. Everything is stored in Postgres with foreign data wrappers, with custom scrapers built in Python. We’re looking to ingest some new data into a table, but want to include columns that are based on what is already in the database (if IDs match, comparing timestamps, etc). What’s the best tool for this in Python? Is this just querying the database in Python and using that return to augment our data? Is this a duckdb use case? Trying to figure it out, any help would be appreciated!
+",2,2,RichOkra,2024-02-17 13:37:59,https://www.reddit.com/r/dataengineering/comments/1at262v/best_way_to_ingest_data_that_is_based_on_data/,0,False,False,False,False
+1atdk8c,How to orchestrate jobs,"Hi all,
+
+I am working as a consultant for an international company as part of the solution architecture team and we are struggling to find ways to improve our orchestration setup. We are working in a Microsoft landscape with 30+ external data sources ingested through Azure Data Factory pipelines that load data into a data lake and then into Azure Synapse. Each source can be expected to have a unique extraction method (custom APIs, relational databases, sftp, SAP etc). We then need to run approximately 100 procedures to create our dimensions and another 20 to create fact tables. Currently each dimension has an identity column that is passed into the facts. Everything is then loaded into a PowerBI model that has reached 50Gb of size. Currently all steps run in sequence which can take up to 7 hours. We want to move to a more granular and flexible orchestration or implement practices that makes data processing more agile (stable surrogate keys, schedule jobs individually). Our largest bottleneck is the refresh limitations of PowerBI. 
+
+I would really appreciate some input on our architecture and suggestions/ideas/brainstorming how we could improve.
+
+In the future we plan to move to dbt and a more lakehouse-like architecture and do some fabric stuff.
+
+This is like my first reddit post ever so i hope some of you find interest in this post.",2,0,SKll75,2024-02-17 21:59:51,https://www.reddit.com/r/dataengineering/comments/1atdk8c/how_to_orchestrate_jobs/,1,False,False,False,False
+1atccw5,Question on data pipeline and Kafka events,"Hello ,
+
+We are having a customer application, which moves data from multiple source systems to target database. It collects real time customer transactions(\~15K transactions/sec) and send/stream those in files to a target database(which is an OLTP database i.e. postgres). And its using kafka for streaming those input files to the target database. The OLTP database will be used for real time reporting and some batch reporting usecase of customer transactions.  
+
+Now the issue we are facing is ,
+
+The database holds normalized table structure. And when we say , one complete transaction means it insert to multiple tables say one record in table1, two related records into table2 and one record into table3. And when the kafka events streams the data from the files, the records are not coming in proper order, means the correct scenario will be that , the transactions should first persists in TABLE1 and TABLE2 and then TABLE3, we are seeing some times the transaction has been present/reached/committed in the TABLE2 but not yet populated in TABLE1 and reports showing wrong value.
+
+Sometimes when we try to backtrack those missing transactions , team says that events can go missing due to various reasons and its expected behavior, so you will have to replay the transactions. Sometimes it results into duplicate transactions etc.
+
+In an ideal scenario , either the transaction should be persisted in full or not at all in the database as its atomic and should obey the ACID property as these are banking/financial transactions, but because of the event based model it seems we are not able to get it correct in the OLTP data store. And to achieve the performance/speed reference keys constraints has not been maintained in the target tables.
+
+So my question is , how we normally design such systems. I understand Kafka is heavily used for such data streaming, so is there something which will ensure the transaction either persists in full or not at all in the target databases and will not have the missing events scenarios considering this will be a highly active system processing \~15K transaction per second during peak time? And how to ensure the completeness of a transaction in such scenario.
+
+&#x200B;",1,0,Upper-Lifeguard-8478,2024-02-17 21:07:02,https://www.reddit.com/r/dataengineering/comments/1atccw5/question_on_data_pipeline_and_kafka_events/,1,False,False,False,False
+1ataxyd,Load balancer for pipelines,"Wondering if anyone is using load balancers for your pipelines. Right now the data we are ingesting is about to explode from adding another new platform double our load. The situation is our singular pipeline is able to ingest data from different platforms but the amount of ingestion data is about to outpace the processing speed on a single EC2. What we plan to do is to port our pipeline to a cluster and use a load balancer to handle ingestions concurrently for different platforms. 
+
+And we dont want to split the ingestion up across several EC2 because it would lead to a complete mess. I just want to know what is your opinion on this.",2,1,Amrita_Kai,2024-02-17 20:05:56,https://www.reddit.com/r/dataengineering/comments/1ataxyd/load_balancer_for_pipelines/,1,False,False,False,False
+1at8a9q,End to End Data Engineering,"Covering core Data Engineering concepts with end to end data tech stacks from the modern times. Leverage it to build your own path.
+
+I may have missed some important pieces and some of your favorite ones, please remind me in the comments.
+
+Added some comments and thoughts that will be helpful: https://www.junaideffendi.com/p/end-to-end-data-engineering",2,2,mjfnd,2024-02-17 18:13:32,https://www.junaideffendi.com/p/end-to-end-data-engineering,0,False,False,False,False
+1at7mp7,Need help with a database project,"Hi everyone,
+
+I have a bit of a conundrum:
+
+I'm a data scientist and I've got the opportunity to turn a monster of an Excel workbook that's crucial for operations and KPI tracking into a database - or at least into a more efficient solution. There's a ton of business processes intertwined with this workbook and no one actually knows how many processes rely on it - or to what level detail. I'm interested in doing this as I think this is what the business needs, because I want to learn more data engineering tools and I want to learn more about that aspect of our operations.
+
+My manager is not too technical so I have to deliver judgement calls on the more technical aspects but I have his support to delve into the topic for a couple of months and map out what I can and what I cannot do, and whether it's feasible for our small team to develop a full solution.
+
+If the result is a ""no"" then that would be acceptable for him, too (obviously I'd work out the next steps and use the lessons learned to ""outsource"" and continue the project).
+
+So far, so good. I talked with the colleague who developed the excel workbook over the past 5-10 years and he was of the very strong opinion of not developing a database solution ourselves but to get a professional solution for three reasons:
+
+* we'd be 'stuck' with maintenance down the road and we're actually too small a team for that
+* he thinks that we should look at the much, much bigger picture (i.e. involving more sites and departments and looking at the business processes way more holistically), and consequently buy the ""infrastructure"" to drive home the point of how crucial this technology is. Also it would make access to data silos potentially easier.
+* he also fears that higher management (who's aware that this is a crucial bit of infrastructure) will then be happy with whatever ""small"" solution we come up with, and then won't be willing to pay for the ""big"" solution that would actually be necessary. The latter solution would take a couple of years to get done.
+
+My manager is playing with the idea that we can entertain two scenarios, a short-to- midterm solution that we maybe develop ourselves and a mid-to-longterm scenario with a ""professional"" (maybe internal/central or maybe external) solution. So, I asked for another colleague and I to get a couple of months time to map the data flows and built a pilot/prototype data solution because I believe that an approach in small, reversible steps might be very valuable here - and no one has considered that yet over the last couple of years. (A couple of months because I want some time to ideate and I can't focus on this topic full-time).
+
+The benefit of delivering a ""small"" solution would be that we'd be making a name for ourselves across the entire hierarchy. Disadvantage will be that accessing existing silos will be a slog and likely not easily available, so we'd still need some manual/workaround type of data handover to our new, independent system (at least initially).
+
+Lastly, I talked with a senior data scientist from the central data team and he said that we should really move away from those ""small"" solutions and look at the bigger picture because they think that we should by default look at the bigger picture to move the company ahead more sustainably. After talking a bit he have me the advice of at least interviewing most of the stakeholders before even starting any coding.
+
+So, I'm a bit confused. I just want to go ahead, get my hands dirty and get started doing things, rather than having these endless discussions. But I also see the benefits of looking at the bigger picture and I don't want to outright dismiss my (very experienced) colleagues' take on the matter.
+
+Do you have some advice for me? Have you been in a comparable situation - and if so, how did/would you approach it?
+
+TL;DR:
+
+I have the opportunity to develop an in-house database solution but I'm not sure if I'm thinking too small.
+
+Many thanks!",0,4,norfkens2,2024-02-17 17:45:09,https://www.reddit.com/r/dataengineering/comments/1at7mp7/need_help_with_a_database_project/,0,False,False,False,False
+1aszyi3,Resource for learning AWS Kinesis,"I want to learn AWS Kinesis for data engineering perspective and there aren't much resources there on the internet. 
+
+Most of the udemy courses only cover theoretical aspects of it. I came across this course  [Ultimate Guide to Data Streaming with AWS Kinesis | Udemy](https://www.udemy.com/course/ultimate-guide-to-data-streaming-with-aws-kinesis/) but I dont know if this is a good one.
+
+My main goal is to learn how to do ETL with streaming data using Kinesis and other tools. ",1,3,mediocrX,2024-02-17 11:34:05,https://www.reddit.com/r/dataengineering/comments/1aszyi3/resource_for_learning_aws_kinesis/,1,False,False,False,False
+1asmjjc,Azure Container Instance IP CICD best practices,"Hey everyone,
+
+I am looking for some guidance for my containerized Flask app API that I am hosting in Azure. Previously I have hosted internal APIs with Azure Functions and ACR/ACI but never an external API and had some questions. 
+
+I am using bash in my console as a makeshift CICD pipeline until I get the infrastructure squared out. So far, once I commit, the script pushes to Docker Hub and Azure Container Registry (ACR) while tagging the image with the git commit ID. It then deletes the existing container group in Azure Container Instance (ACI) and recreates it using the same FQDN.
+
+I want to introduce Azure API Management (APIM) and Front Door (AFD) now that this will be an external facing IP. The idea here is that I can manage authentication/security/rate limits as well as use a custom DNS and point to a prod/test/dev API.
+
+My issue is that I don't see a way to maintain a static IP on the ACI and of course if I delete and recreate it the IP will change. Then I will have to reconfigure in the APIM every time. Am I going about this wrong? It doesn't seem I can point to the FQDN in this case unfortunately. Ideally, I can rebuild the ACI without losing the IP. If not, I suppose the best practice would be to query the IP and update the corresponding setting in APIM. This won't be too difficult, but it felt like there may be a simpler way.
+
+I am also open to advice on splitting the prod/test/dev in this case. My initial thought was to split at the resource group level so each environment would have their own instance of each service i.e. ACR/ACI/APIM/AFD. This is what I do for internal APIs. ChatGPT is telling me a single instance of APIM and AFD would suffice but I am taking it with a grain of salt.
+
+I understand this may be more of a platform engineering question, but I am in one of those DE positions where I build the data services including the infrastructure and DevOps. Thank you all in advance!",1,1,ShouldHaveWentBio,2024-02-16 23:08:34,https://www.reddit.com/r/dataengineering/comments/1asmjjc/azure_container_instance_ip_cicd_best_practices/,1,False,False,False,False
+1atcpyw,Is TCP/IP Ideal in a Perfect World?,"I’m reading about TCP/IP and I think the design of everything is amazing. It all works in a way that supports small scale, large scale, and everything between. It’s extensible… 
+
+Though, I doubt it began this way. I’m sure that the suite of protocols and methodologies were forged slowly over time as problems with scale presented itself in networking of hosts and applications.
+
+Part of me wonders, how much of the suite is notably not optimal and would be done differently if we could just do it all over today?
+
+
+Taken from Wikipedia, a brief background on TCP/IP:
+
+> The Internet protocol suite provides end-to-end data communication specifying how data should be packetized, addressed, transmitted, routed, and received. This functionality is organized into four abstraction layers, which classify all related protocols according to each protocol's scope of networking.[1][2] An implementation of the layers for a particular application forms a protocol stack. From lowest to highest, the layers are the link layer, containing communication methods for data that remains within a single network segment (link); the internet layer, providing internetworking between independent networks; the transport layer, handling host-to-host communication; and the application layer, providing process-to-process data exchange for applications.
+
+>The technical standards underlying the Internet protocol suite and its constituent protocols are maintained by the Internet Engineering Task Force (IETF). The Internet protocol suite predates the OSI model, a more comprehensive reference framework for general networking systems.
+
+So the IETF is focused on supporting countless variations of network types. Infinite combinations. Many of which existing due to legacy technologies.
+
+What if we could do it all over again? Would we start with the current suite, or would there be better options for us in that scenario?",0,2,DuckDatum,2024-02-17 21:23:14,https://www.reddit.com/r/dataengineering/comments/1atcpyw/is_tcpip_ideal_in_a_perfect_world/,0,False,False,False,False

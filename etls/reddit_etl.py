@@ -12,7 +12,8 @@ def connect_reddit(client_id, client_secret, user_agent) -> Reddit:
     try:
         reddit = praw.Reddit(client_id=client_id,
                              client_secret=client_secret,
-                             user_agent=user_agent)
+                             user_agent=user_agent,
+                             read_only = True)
         print("connected to reddit!")
         return reddit
     except Exception as e:
@@ -43,6 +44,8 @@ def transform_data(post_df: pd.DataFrame):
                                  post_df['edited'], edited_mode).astype(bool)
     post_df['num_comments'] = post_df['num_comments'].astype(int)
     post_df['score'] = post_df['score'].astype(int)
+    post_df['upvote_ratio'] = post_df['upvote_ratio'].astype(int)
+    post_df['selftext'] = post_df['selftext'].astype(str)
     post_df['title'] = post_df['title'].astype(str)
 
     return post_df
