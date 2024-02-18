@@ -1,4 +1,4 @@
-# Reddit-Data-Pipeline
+# Reddit Data Pipeline
 
 #ToDO
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
