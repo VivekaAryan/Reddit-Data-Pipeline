@@ -1,0 +1,230 @@
+id,title,selftext,score,num_comments,author,created_utc,url,upvote_ratio,over_18,edited,spoiler,stickied
+1at7mdg,Update to interview posts,"After careful consideration and listening to your feedback, we've decided to no longer allow interview-related posts because they take away focus from our community's main purpose.
+
+In the past, although they usually weren't directly related to data engineering we've allowed interview posts like ""What are interviews like at XYZ company?"" or ""What should I prepare/study for XYZ position?""
+
+These questions are more often than not either too difficult to meaningfully answer or have already been answered many times. Similarly to resume reviews, we will no longer be allowing these types of posts and instead point users to other resources that are better suited and focused on answering those questions like Glassdoor and Blind.
+
+Thank you again to everyone who has been providing constructive feedback on this topic. We know it may feel frustrating to see the same type of content and it may not feel like progress is happening but it just takes time to carefully review these changes and hear all opinions. We appreciate your patience and for helping shape this community.",80,7,AutoModerator,2024-02-17 17:44:48,https://www.reddit.com/r/dataengineering/comments/1at7mdg/update_to_interview_posts/,0,False,False,False,True
+1atbt4x,Any video course equivalent of the fundamentals of data engineering out there?,"I'm a BI developer looking to upgrade by solidifying my ETL/Pipelining skills. I read many times that a great start would be to read the book Fundamentals of Data Engineering, but I happen to absorb concepts better through video. Any course equivalent that you recommend?",33,8,Alno1,2024-02-17 20:43:02,https://www.reddit.com/r/dataengineering/comments/1atbt4x/any_video_course_equivalent_of_the_fundamentals/,0,False,False,False,False
+1at32dw,Do you use surrogate key or composite key in fact tables?,"When do you use which one?
+
+Which is better?
+
+Using auto-generating PK:
+
+`CREATE TABLE fact_orderlines (`  
+`order_id INTEGER IDENTITY(1,1) PRIMARY KEY, -- SERIAL not supported use IDENTITY instead`  
+`product_id INTEGER,`  
+`category_id INTEGER,`  
+`date_id INTEGER,`  
+`market_id INTEGER,`  
+`customer_id INTEGER,`  
+`amount DECIMAL(10,2)  -- MONEY data type is not supported, use DECIMAL instead`  
+`);`
+
+Or using a composite key:
+
+`ALTER TABLE fact_orderlines ADD CONSTRAINT pk_fact_orderlines PRIMARY KEY (product_id, category_id, date_id, market_id, customer_id);`",24,32,rental_car_abuse,2024-02-17 14:21:39,https://www.reddit.com/r/dataengineering/comments/1at32dw/do_you_use_surrogate_key_or_composite_key_in_fact/,0,False,False,False,False
+1at76os,Airbyte and similar EL tools,"I recently shared my thoughts in a previous discussion where there was some dissatisfaction mentioned regarding Airbyte. Although I haven't personally used Airbyte, on paper, it seems ideal.
+
+It offers a unified method for establishing your EL (Extract and Load) pipeline, recognizing that the majority of these pipelines—connecting to standard data sources like databases, object storage, APIs, etc.—follow a similar pattern with either scheduled batch or streaming workflows.
+
+Airbyte appears to excel in this area, and the documentation suggests that setting up a completely new connector is relatively straightforward.
+
+I'm eager to learn about others' experiences with Airbyte.
+
+Additionally, I'm exploring other tools in the market. I'm in search of a solution that can seamlessly integrate data into my lakehouse, with the following criteria:
+
+- Open-source and capable of being hosted independently (I don’t want to pay for it)
+- The ability to configure EL connections between sources and destinations as code, preferably in a declarative manner using Infrastructure as Code (IaC) tools like Terraform or Pulumi
+- The pipeline should automatically log crucial metadata, including extraction timestamps and file sizes etc.
+
+Historically, I've set up these extraction processes manually using self-hosted servers or lambda functions. However, the complexity tends to increase with the number of connections. Hence, I'm drawn to the concept of EL tools that offer a standardized approach to configuring these connections.",13,38,caksters,2024-02-17 17:26:12,https://www.reddit.com/r/dataengineering/comments/1at76os/airbyte_and_similar_el_tools/,0,False,False,False,False
+1atq6yq,Seeking Advice on ETL/ELT Platforms – Your Experiences?,"Hello everyone,
+Our team is currently in the process of evaluating various ETL/ELT platforms to enhance our data integration and transformation capabilities with Google BigQuery. We've been using Skyvia but are looking for something more scalable and robust.
+We’ve compiled a comparison chart of several platforms (Informatica, Microsoft, Oracle, Qlik, SAP, and Talend) with various features such as ease of use, scalability, cost, performance, security, resources, strengths, and weaknesses.
+Based on your experience, which of these platforms would you recommend for use with BigQuery? I’m particularly interested in scalability and performance. If you've used any of these platforms, I’d love to hear your thoughts and experiences and integration with BigQuery.
+Your insights and experiences would be invaluable in helping us make an informed decision. Thank you in advance!",15,24,Junior-Okra222,2024-02-18 09:24:23,https://i.redd.it/jssiglo4bbjc1.jpeg,0,False,False,False,False
+1ato76r,Data Pipeline Demo,"There was a post the other day asking for suggestions on a demo pipeline. I’d suggested building something that hit an API and then persisted the data in an object store (MinIO).
+
+I figured I should ‘eat my own dog food’. So I built the pipeline myself. I’ve published it to a [GitHub repo](https://github.com/nydasco/data-pipeline-demo), and I’m intending to post a series of LinkedIn articles that walk through the code base (I’ll link to them in the comments as I publish them).
+
+As an overview, it spins up in Docker, orchestrated with Airflow, with data moved around and transformed using Polars. The data are persisted across a series of S3 buckets in MinIO, and there is a Jupyter front end to look at the final fact and dimension tables.
+
+It was an educational experience building this, and there is lots of room for improvement. But I hope that it is useful to some of you to get an idea of a pipeline.
+
+The README.md steps through everything you need to do to get it running, and I’ve done my best to comment the code well.
+
+Would be great to get some feedback.",14,3,nydasco,2024-02-18 07:09:14,https://www.reddit.com/r/dataengineering/comments/1ato76r/data_pipeline_demo/,1,False,False,False,False
+1at8bft,About iceberg tables,"My company will change ERP systems net year (after 20 years). Together with this change will come a change in data architecture. Where previously i'd manage an azure stack, the new stack will be AWS+Snowflake. A big requirement of the stack is to be able to time travel. Therefor they want to turn a daily full load into iceberg tables and do a catalog integration with snowflake.
+
+As I have some experience with delta lakes, I had a discussion with our data architect. My argument was that trying to use iceberg tables without any maintenance for timetraveling lets say 5 years would probably be terrible for storage cost and performance, if not impossible. He said that it was no problem whatsoever.
+
+Can iceberg tables be used to timetravel without limit? If so what would be the implication on storage volumes over time? Is there a better solution?",13,11,Annual_Scratch7181,2024-02-17 18:15:02,https://www.reddit.com/r/dataengineering/comments/1at8bft/about_iceberg_tables/,1,False,False,False,False
+1atpbay,Labs for learning Spark or Airflow,"Hi, 
+
+I'm really a newbie and trying to get into a Data Engineering field. I'm trying to learn Pyspark or Airflow and would like to know whether there is any online platform that also provides labs online to practice.
+
+Thank so much in advance ",5,5,BarberCultural4665,2024-02-18 08:23:16,https://www.reddit.com/r/dataengineering/comments/1atpbay/labs_for_learning_spark_or_airflow/,0,False,False,False,False
+1atqm34,"Are the ""cool"" tools (Meltano, dlt, sling, Airbyte, etc) really production ready","I've been toying around with all of the mentioned products in the last weeks as we are looking to rebuild our data stack from the existing mix of shell scripts, python and talend jobs. We are running on AWS. One thing I noticed is that none of these tools support configurations that are pretty common in enterprise settings like ours. For example, we enforce KMS encryption on S3 buckets via service control policies. None of the tools seem to support this, which also prevents loading of data into Redshift. While I am thinking ""yes, this is open source, I could add this myself"" I am wondering what else is in store, if no one in a larger org seems to have run into this. Same goes for things like support for dynamic AWS credentials (we don't allow IAM users) and probably other surprises. I'm not necessarily blaming the tools, as there are a bunch of AWS' own services that don't support this (looking at you Datasync) either.",4,6,pokepip,2024-02-18 09:52:29,https://www.reddit.com/r/dataengineering/comments/1atqm34/are_the_cool_tools_meltano_dlt_sling_airbyte_etc/,0,False,False,False,False
+1atkfkl,How to manage healthcare provider data,"Does anyone in this sub work with healthcare provider data? 
+
+I started a job recently in health insurance and have been handed a project to manage/insert/update provider data for the company. Currently the whole data set is in a commercial low code data management system, that is really difficult to work with (no version control, no documentation, deployment and maintenance is a pain). Our contract for the commercial software we use is up for renewal this year and likely will not be renewed.
+
+Currently, the system we have is a data management platform. We load data from multiple internal and external sources, merge all the data into a master record, then export any updates/inserts to other internal systems.
+
+I’m new to healthcare and I am wondering if there is a platform or architecture that is commonly used to manage this type of data. The company I work for is small and I am not confident that management really knows what the industry standards are (I certainly do not). If anyone here has any experience in this domain and could point me in the right direction I would appreciate it. 
+
+Feel free to DM me as well.",5,8,Elmopo74,2024-02-18 03:26:42,https://www.reddit.com/r/dataengineering/comments/1atkfkl/how_to_manage_healthcare_provider_data/,1,False,False,False,False
+1atipxm,Questions about Databricks certifications,"I've been passively searching for a new job for the last year but in the last couple of weeks it's become a more active search. I'd like to find remote work (currently on-site and hate it), but I'm also interested in making a career shift towards data engineering and away (?) from a background as a backend software developer. Without any good way of getting professional experience with modern data engineering tools in my current role, I've started working towards certifications to bolster my résumé and learn more about the skill set required.
+
+I have a lot of experience with .NET, SQL Server, and the ""Microsoft stack"" in general but almost no experience with cloud technologies, so I thought it would be natural to start with a Microsoft Azure certification. I just passed the exam for Azure Data Engineer Associate and I am very proud and excited!
+
+I think next I would like to pursue a Databricks certification, but I am unsure which is the best fit for my interests and for the interests of potential employers. I saw a post on Medium that suggested [Databricks Certified Associate Developer for Apache Spark](https://www.databricks.com/learn/certification/apache-spark-developer-associate), but I'm wondering if [Databricks Certified Data Engineer Associate](https://www.databricks.com/learn/certification/data-engineer-associate) would be more worth my time. I am leaning towards the ""Developer for Apache Spark"" one, as it seems like it would be more suited for proving skill with developing for Spark in a general sense, but does anyone have more insight into which would be best for me?
+
+Thanks so much!",4,3,Le-Melancolique,2024-02-18 01:57:42,https://www.reddit.com/r/dataengineering/comments/1atipxm/questions_about_databricks_certifications/,1,False,False,False,False
+1atdk8c,How to orchestrate jobs,"Hi all,
+
+I am working as a consultant for an international company as part of the solution architecture team and we are struggling to find ways to improve our orchestration setup. We are working in a Microsoft landscape with 30+ external data sources ingested through Azure Data Factory pipelines that load data into a data lake and then into Azure Synapse. Each source can be expected to have a unique extraction method (custom APIs, relational databases, sftp, SAP etc). We then need to run approximately 100 procedures to create our dimensions and another 20 to create fact tables. Currently each dimension has an identity column that is passed into the facts. Everything is then loaded into a PowerBI model that has reached 50Gb of size. Currently all steps run in sequence which can take up to 7 hours. We want to move to a more granular and flexible orchestration or implement practices that makes data processing more agile (stable surrogate keys, schedule jobs individually). Our largest bottleneck is the refresh limitations of PowerBI. 
+
+I would really appreciate some input on our architecture and suggestions/ideas/brainstorming how we could improve.
+
+In the future we plan to move to dbt and a more lakehouse-like architecture and do some fabric stuff.
+
+This is like my first reddit post ever so i hope some of you find interest in this post.",5,3,SKll75,2024-02-17 21:59:51,https://www.reddit.com/r/dataengineering/comments/1atdk8c/how_to_orchestrate_jobs/,1,False,False,False,False
+1atccw5,Question on data pipeline and Kafka events,"Hello ,
+
+We are having a customer application, which moves data from multiple source systems to target database. It collects real time customer transactions(\~15K transactions/sec) and send/stream those in files to a target database(which is an OLTP database i.e. postgres). And its using kafka for streaming those input files to the target database. The OLTP database will be used for real time reporting and some batch reporting usecase of customer transactions.  
+
+Now the issue we are facing is ,
+
+The database holds normalized table structure. And when we say , one complete transaction means it insert to multiple tables say one record in table1, two related records into table2 and one record into table3. And when the kafka events streams the data from the files, the records are not coming in proper order, means the correct scenario will be that , the transactions should first persists in TABLE1 and TABLE2 and then TABLE3, we are seeing some times the transaction has been present/reached/committed in the TABLE2 but not yet populated in TABLE1 and reports showing wrong value.
+
+Sometimes when we try to backtrack those missing transactions , team says that events can go missing due to various reasons and its expected behavior, so you will have to replay the transactions. Sometimes it results into duplicate transactions etc.
+
+In an ideal scenario , either the transaction should be persisted in full or not at all in the database as its atomic and should obey the ACID property as these are banking/financial transactions, but because of the event based model it seems we are not able to get it correct in the OLTP data store. And to achieve the performance/speed reference keys constraints has not been maintained in the target tables.
+
+So my question is , how we normally design such systems. I understand Kafka is heavily used for such data streaming, so is there something which will ensure the transaction either persists in full or not at all in the target databases and will not have the missing events scenarios considering this will be a highly active system processing \~15K transaction per second during peak time? And how to ensure the completeness of a transaction in such scenario.
+
+&#x200B;",4,3,Upper-Lifeguard-8478,2024-02-17 21:07:02,https://www.reddit.com/r/dataengineering/comments/1atccw5/question_on_data_pipeline_and_kafka_events/,1,False,False,False,False
+1at5kpz,What are some good sources to learn Scala and Spark?,Title,4,5,Present-Yogurt-1998,2024-02-17 16:17:27,https://www.reddit.com/r/dataengineering/comments/1at5kpz/what_are_some_good_sources_to_learn_scala_and/,0,False,False,False,False
+1atsmdv,From a Data Engineer to another,"Hello everyone,
+
+As I prepare to depart from my current company in a month, I'm encountering a common data engineering challenge:
+
+- I had two months to build pipelines for staging, as well as fact and model tables for a project, which I drafted on paper (not submitted yet).
+- The team spent a month configuring dbt and related tools using terraform, and the source tables were only provided to me afterward, with minimal documentation available, except for an Excel sheet with some columns.
+- The data engineer responsible for setting up the source tables took a three-week vacation, the day after he pushed the source tables, leaving behind minimal documentation.
+
+Now, with just one month left, scarce documentation, and no stakeholder support, what would you do?",5,1,anfawave,2024-02-18 12:04:25,https://www.reddit.com/r/dataengineering/comments/1atsmdv/from_a_data_engineer_to_another/,1,False,False,False,False
+1atrusw,The DBT of AI,,4,2,FewComfort75,2024-02-18 11:16:38,https://matsmoll.github.io/posts/the-dbt-of-ai,0,False,False,False,False
+1atqdps,Database Fundamentals,,3,0,youmarye,2024-02-18 09:37:03,https://tontinton.com/posts/database-fundementals,1,False,False,False,False
+1atj40m,Apache datafusion question - primary use cases?,"Hi I just went through part 1 of 3 parts regarding Apache data fusion because it has come up at work. 
+
+After listening to this, however, it seems like as a query engine its primary use case is for building domain specific databases. 
+
+Is that right?
+
+https://share.highersignal.xyz/compaction/apache-arrow-datafusion-architecture-part-1",3,1,Double-Code1902,2024-02-18 02:17:07,https://www.reddit.com/r/dataengineering/comments/1atj40m/apache_datafusion_question_primary_use_cases/,1,False,False,False,False
+1at8a9q,End to End Data Engineering,"Covering core Data Engineering concepts with end to end data tech stacks from the modern times. Leverage it to build your own path.
+
+I may have missed some important pieces and some of your favorite ones, please remind me in the comments.
+
+Added some comments and thoughts that will be helpful: https://www.junaideffendi.com/p/end-to-end-data-engineering",2,4,mjfnd,2024-02-17 18:13:32,https://www.junaideffendi.com/p/end-to-end-data-engineering,0,False,False,False,False
+1attvja,Beginner here. How do I learn by practicing? ,"Hello,
+
+I learn best when I follow along and implement projects. I have been successful learning a lot of data science through it and would’ve loved to do so at the engineering aspects. Here is an example https://sagemaker-examples.readthedocs.io/en/latest/ 
+
+
+Most of the resources I have been recommended are very theoretical. And I don’t have the luxury to practice at work. 
+
+I looked at Acloudguru and databricks academy. Both look promising. I am trying to widen the net with respect to technology so that I can pick up best practices and intuitions. 
+
+Are there other hands on guides you recommend?
+
+Thank you all. 
+",2,1,20231027,2024-02-18 13:17:07,https://www.reddit.com/r/dataengineering/comments/1attvja/beginner_here_how_do_i_learn_by_practicing/,1,False,False,False,False
+1atjppu,For loop in Delta live table,"Hi, i am new to Databricks and been having some challenges figuring out how to use for loop inside delta live table pipeline. Here’s the problem I have. Assume I create this view,
+
+@dlt.view
+def taxi_raw():
+  return spark.read.format(""json"").load(""/databricks-datasets/nyctaxi/sample/json/"")
+
+The request is to use (for loop) or any other possible way to iterate over each row and then use values from column 1 and 2 to pass them into another function. I can do it in normal notebook using collect(), but it seems collect() function is not supported in DLT. Any help or suggestions please.
+",2,3,stock_daddy,2024-02-18 02:48:04,https://www.reddit.com/r/dataengineering/comments/1atjppu/for_loop_in_delta_live_table/,1,False,False,False,False
+1ataxyd,Load balancer for pipelines,"Wondering if anyone is using load balancers for your pipelines. Right now the data we are ingesting is about to explode from adding another new platform double our load. The situation is our singular pipeline is able to ingest data from different platforms but the amount of ingestion data is about to outpace the processing speed on a single EC2. What we plan to do is to port our pipeline to a cluster and use a load balancer to handle ingestions concurrently for different platforms. 
+
+And we dont want to split the ingestion up across several EC2 because it would lead to a complete mess. I just want to know what is your opinion on this.",2,4,Amrita_Kai,2024-02-17 20:05:56,https://www.reddit.com/r/dataengineering/comments/1ataxyd/load_balancer_for_pipelines/,1,False,False,False,False
+1athjdm,some advice about data,"Hello everyone,
+
+I'm currently going to school for rangeland sciences, and I am interested in learning more about GIS, specifically to utilize the program. I honestly can't wrap my head around the theories and concepts my class is currently discussing XD. But I can through repetition use gis to create the things to bring environmental data to live on a map(at least that is how I see myself utilizing it). But my question is what is the best way to (I don't even really know how to say this) create the data used in the program. Excell, Acess, R-programing? 
+
+I was never really much good at programming, and I utilized excell while in the military and found out it can be an extremely powerful tool. So I thought to ask you all for some advice since data never really was my strong suit, but I need to be able to navigate to an extent. 
+
+&#x200B;
+
+Best,
+
+Jacob",1,5,jmcdougal117,2024-02-18 00:58:37,https://www.reddit.com/r/dataengineering/comments/1athjdm/some_advice_about_data/,1,False,False,False,False
+1at7mp7,Need help with a database project,"Hi everyone,
+
+I have a bit of a conundrum:
+
+I'm a data scientist and I've got the opportunity to turn a monster of an Excel workbook that's crucial for operations and KPI tracking into a database - or at least into a more efficient solution. There's a ton of business processes intertwined with this workbook and no one actually knows how many processes rely on it - or to what level detail. I'm interested in doing this as I think this is what the business needs, because I want to learn more data engineering tools and I want to learn more about that aspect of our operations.
+
+My manager is not too technical so I have to deliver judgement calls on the more technical aspects but I have his support to delve into the topic for a couple of months and map out what I can and what I cannot do, and whether it's feasible for our small team to develop a full solution.
+
+If the result is a ""no"" then that would be acceptable for him, too (obviously I'd work out the next steps and use the lessons learned to ""outsource"" and continue the project).
+
+So far, so good. I talked with the colleague who developed the excel workbook over the past 5-10 years and he was of the very strong opinion of not developing a database solution ourselves but to get a professional solution for three reasons:
+
+* we'd be 'stuck' with maintenance down the road and we're actually too small a team for that
+* he thinks that we should look at the much, much bigger picture (i.e. involving more sites and departments and looking at the business processes way more holistically), and consequently buy the ""infrastructure"" to drive home the point of how crucial this technology is. Also it would make access to data silos potentially easier.
+* he also fears that higher management (who's aware that this is a crucial bit of infrastructure) will then be happy with whatever ""small"" solution we come up with, and then won't be willing to pay for the ""big"" solution that would actually be necessary. The latter solution would take a couple of years to get done.
+
+My manager is playing with the idea that we can entertain two scenarios, a short-to- midterm solution that we maybe develop ourselves and a mid-to-longterm scenario with a ""professional"" (maybe internal/central or maybe external) solution. So, I asked for another colleague and I to get a couple of months time to map the data flows and built a pilot/prototype data solution because I believe that an approach in small, reversible steps might be very valuable here - and no one has considered that yet over the last couple of years. (A couple of months because I want some time to ideate and I can't focus on this topic full-time).
+
+The benefit of delivering a ""small"" solution would be that we'd be making a name for ourselves across the entire hierarchy. Disadvantage will be that accessing existing silos will be a slog and likely not easily available, so we'd still need some manual/workaround type of data handover to our new, independent system (at least initially).
+
+Lastly, I talked with a senior data scientist from the central data team and he said that we should really move away from those ""small"" solutions and look at the bigger picture because they think that we should by default look at the bigger picture to move the company ahead more sustainably. After talking a bit he have me the advice of at least interviewing most of the stakeholders before even starting any coding.
+
+So, I'm a bit confused. I just want to go ahead, get my hands dirty and get started doing things, rather than having these endless discussions. But I also see the benefits of looking at the bigger picture and I don't want to outright dismiss my (very experienced) colleagues' take on the matter.
+
+Do you have some advice for me? Have you been in a comparable situation - and if so, how did/would you approach it?
+
+TL;DR:
+
+I have the opportunity to develop an in-house database solution but I'm not sure if I'm thinking too small.
+
+Many thanks!",1,4,norfkens2,2024-02-17 17:45:09,https://www.reddit.com/r/dataengineering/comments/1at7mp7/need_help_with_a_database_project/,0,False,False,False,False
+1atsxpt,Seeking user-friendly data analysis tool for non-technical clients,"I've been working on streamlining data analysis for a few non-technical clients who are currently grappling with data processing using spreadsheets and third-party tools. As a developer, I'm on a quest to find a user-friendly tool that allows me to configure data pipelines, seamlessly connect with third-party tools, and visualize both the results and intermediate steps.
+
+While I appreciate the simplicity of tools like SQL and Excel, they fall short of meeting my requirements for this particular task. I'm curious to know if anyone has come across a more intuitive and easy-to-use solution that strikes the right balance between simplicity and functionality.
+
+Your insights and recommendations would be immensely valuable!",0,4,moshestv,2024-02-18 12:23:06,https://www.reddit.com/r/dataengineering/comments/1atsxpt/seeking_userfriendly_data_analysis_tool_for/,0,False,False,False,False
+1atcwjw,Transitioning from Data Engineering in Mexico to the US Job Market,"Hi everyone,
+
+I recently graduated with a degree in Software Engineering from a top university in Mexico, and I've been working as a data engineer for three years now at a transitional company in my city. My ultimate career goal is to break into the US job market, either by relocating to a city in the US or by working remotely for a US-based company from Mexico.
+
+I'm eager to enhance my career prospects, and I'm considering pursuing a master's degree in either Data Science or Statistics in the US. However, I'm torn between whether this would be a worthwhile investment of both time and money, or if I could achieve my goals through self-study and professional development.
+
+What are your thoughts on this? Do you believe pursuing a master's degree in the US would significantly improve my chances of entering the US job market, or would it be more beneficial to pursue other avenues of skill development independently?
+
+I'd greatly appreciate any insights or advice you can offer. Thank you in advance for your help!",0,10,josegzza,2024-02-17 21:31:17,https://www.reddit.com/r/dataengineering/comments/1atcwjw/transitioning_from_data_engineering_in_mexico_to/,0,False,False,False,False
+1atcpyw,Is TCP/IP Ideal in a Perfect World?,"I’m reading about TCP/IP and I think the design of everything is amazing. It all works in a way that supports small scale, large scale, and everything between. It’s extensible… 
+
+Though, I doubt it began this way. I’m sure that the suite of protocols and methodologies were forged slowly over time as problems with scale presented itself in networking of hosts and applications.
+
+Part of me wonders, how much of the suite is notably not optimal and would be done differently if we could just do it all over today?
+
+
+Taken from Wikipedia, a brief background on TCP/IP:
+
+> The Internet protocol suite provides end-to-end data communication specifying how data should be packetized, addressed, transmitted, routed, and received. This functionality is organized into four abstraction layers, which classify all related protocols according to each protocol's scope of networking.[1][2] An implementation of the layers for a particular application forms a protocol stack. From lowest to highest, the layers are the link layer, containing communication methods for data that remains within a single network segment (link); the internet layer, providing internetworking between independent networks; the transport layer, handling host-to-host communication; and the application layer, providing process-to-process data exchange for applications.
+
+>The technical standards underlying the Internet protocol suite and its constituent protocols are maintained by the Internet Engineering Task Force (IETF). The Internet protocol suite predates the OSI model, a more comprehensive reference framework for general networking systems.
+
+So the IETF is focused on supporting countless variations of network types. Infinite combinations. Many of which existing due to legacy technologies.
+
+What if we could do it all over again? Would we start with the current suite, or would there be better options for us in that scenario?",0,4,DuckDatum,2024-02-17 21:23:14,https://www.reddit.com/r/dataengineering/comments/1atcpyw/is_tcpip_ideal_in_a_perfect_world/,0,False,False,False,False
