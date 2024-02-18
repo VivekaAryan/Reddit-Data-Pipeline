@@ -1,18 +1,16 @@
 # Reddit Data Pipeline
-
-#ToDO
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Airflow](https://img.shields.io/badge/Airflow-blue.svg)](https://www.w3.org/TR/html52/)
-[![Celery](https://img.shields.io/badge/Celery-CSS%203-green.svg)](https://www.w3.org/Style/CSS/Overview.en.html)
-[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-JavaScript%20ES6-red.svg)](https://www.ecma-international.org/ecma-262/6.0/)
-[![AWS S3](https://img.shields.io/badge/AWS%20S3-MIT%20License-yellow.svg)](https://opensource.org/licenses/MIT)
-[![AWS Glue](https://img.shields.io/badge/AWS%20Glue-HTML%205-blue.svg)](https://www.w3.org/TR/html52/)
-[![Amazon Athena](https://img.shields.io/badge/Amazon%20Athena-CSS%203-green.svg)](https://www.w3.org/Style/CSS/Overview.en.html)
-[![Amazon Redshift](https://img.shields.io/badge/Amazon%20Redshift-JavaScript%20ES6-red.svg)](https://www.ecma-international.org/ecma-262/6.0/)
-[![SQL](https://img.shields.io/badge/SQL-MIT%20License-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python](https://img.shields.io/badge/Python-HTML%205-blue.svg)](https://www.w3.org/TR/html52/)
-[![PySpark](https://img.shields.io/badge/PySpark-CSS%203-green.svg)](https://www.w3.org/Style/CSS/Overview.en.html)
-[![API](https://img.shields.io/badge/API-JavaScript%20ES6-red.svg)](https://www.ecma-international.org/ecma-262/6.0/)
+[![Airflow](https://img.shields.io/badge/Airflow-blue.svg)](https://airflow.apache.org/docs/)
+[![Celery](https://img.shields.io/badge/Celery-green.svg)](https://docs.celeryq.dev/en/stable/getting-started/introduction.html)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-red.svg)](https://www.postgresql.org/docs/)
+[![AWS S3](https://img.shields.io/badge/AWS%20S3-yellow.svg)](https://docs.aws.amazon.com/s3/)
+[![AWS Glue](https://img.shields.io/badge/AWS%20Glue-blue.svg)](https://docs.aws.amazon.com/glue/)
+[![Amazon Athena](https://img.shields.io/badge/Amazon%20Athena-green.svg)](https://docs.aws.amazon.com/athena/)
+[![Amazon Redshift](https://img.shields.io/badge/Amazon%20Redshift-red.svg)](https://docs.aws.amazon.com/redshift/)
+[![SQL](https://img.shields.io/badge/SQL-yellow.svg)](https://www.w3schools.com/sql/sql_quickref.asp)
+[![Python](https://img.shields.io/badge/Python-blue.svg)](https://docs.python.org/3.11/)
+[![PySpark](https://img.shields.io/badge/PySpark-green.svg)](https://spark.apache.org/docs/latest/api/python/index.html)
+[![API](https://img.shields.io/badge/API-red.svg)](https://aws.amazon.com/what-is/api/#:~:text=API%20stands%20for%20Application%20Programming,other%20using%20requests%20and%20responses.)
 
 
 This project offers a robust data pipeline solution designed to efficiently extract, transform, and load (ETL) Reddit data into a Redshift data warehouse. Leveraging a blend of industry-standard tools and services, the pipeline ensures seamless data processing and integration.
