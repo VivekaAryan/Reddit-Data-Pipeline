@@ -1,0 +1,244 @@
+id,title,selftext,score,num_comments,author,created_utc,url,upvote_ratio,over_18,edited,spoiler,stickied
+1atq6yq,Seeking Advice on ETL/ELT Platforms – Your Experiences?,"Hello everyone,
+Our team is currently in the process of evaluating various ETL/ELT platforms to enhance our data integration and transformation capabilities with Google BigQuery. We've been using Skyvia but are looking for something more scalable and robust.
+We’ve compiled a comparison chart of several platforms (Informatica, Microsoft, Oracle, Qlik, SAP, and Talend) with various features such as ease of use, scalability, cost, performance, security, resources, strengths, and weaknesses.
+Based on your experience, which of these platforms would you recommend for use with BigQuery? I’m particularly interested in scalability and performance. If you've used any of these platforms, I’d love to hear your thoughts and experiences and integration with BigQuery.
+Your insights and experiences would be invaluable in helping us make an informed decision. Thank you in advance!",37,50,Junior-Okra222,2024-02-18 09:24:23,https://i.redd.it/jssiglo4bbjc1.jpeg,0,False,False,False,False
+1atz3j8,Doing data engineering as a hobby ?,"Hi !
+
+I am a junior Data Engineer, still doing my master degree in big data & IA and try to make some data stuff outside work/courses.
+
+As I struggle to found a cool project to run, I was wondering if you guys are doing Data Engineering, and data things, ouside work ? Is like a hobby for you ? Do you found enough fun in doing that, to run such a project ?",32,37,oOGreenFantasyOo,2024-02-18 17:13:33,https://www.reddit.com/r/dataengineering/comments/1atz3j8/doing_data_engineering_as_a_hobby/,0,False,False,False,False
+1atqm34,"Are the ""cool"" tools (Meltano, dlt, sling, Airbyte, etc) really production ready","I've been toying around with all of the mentioned products in the last weeks as we are looking to rebuild our data stack from the existing mix of shell scripts, python and talend jobs. We are running on AWS. One thing I noticed is that none of these tools support configurations that are pretty common in enterprise settings like ours. For example, we enforce KMS encryption on S3 buckets via service control policies. None of the tools seem to support this, which also prevents loading of data into Redshift. While I am thinking ""yes, this is open source, I could add this myself"" I am wondering what else is in store, if no one in a larger org seems to have run into this. Same goes for things like support for dynamic AWS credentials (we don't allow IAM users) and probably other surprises. I'm not necessarily blaming the tools, as there are a bunch of AWS' own services that don't support this (looking at you Datasync) either.",22,22,pokepip,2024-02-18 09:52:29,https://www.reddit.com/r/dataengineering/comments/1atqm34/are_the_cool_tools_meltano_dlt_sling_airbyte_etc/,0,False,False,False,False
+1ato76r,Data Pipeline Demo,"There was a post the other day asking for suggestions on a demo pipeline. I’d suggested building something that hit an API and then persisted the data in an object store (MinIO).
+
+I figured I should ‘eat my own dog food’. So I built the pipeline myself. I’ve published it to a [GitHub repo](https://github.com/nydasco/data-pipeline-demo), and I’m intending to post a series of LinkedIn articles that walk through the code base (I’ll link to them in the comments as I publish them).
+
+As an overview, it spins up in Docker, orchestrated with Airflow, with data moved around and transformed using Polars. The data are persisted across a series of S3 buckets in MinIO, and there is a Jupyter front end to look at the final fact and dimension tables.
+
+It was an educational experience building this, and there is lots of room for improvement. But I hope that it is useful to some of you to get an idea of a pipeline.
+
+The README.md steps through everything you need to do to get it running, and I’ve done my best to comment the code well.
+
+Would be great to get some feedback.
+
+Edit: [Link to first LinkedIn article](https://www.linkedin.com/pulse/building-modern-data-pipeline-journey-from-api-insight-andy-sawyer-nx1oc%3FtrackingId=x%252Fesg5MtRZSbov%252FoWswC0g%253D%253D/?trackingId=x%2Fesg5MtRZSbov%2FoWswC0g%3D%3D)",21,4,nydasco,2024-02-18 07:09:14,https://www.reddit.com/r/dataengineering/comments/1ato76r/data_pipeline_demo/,0,False,False,False,False
+1atsmdv,From a Data Engineer to another,"Hello everyone,
+
+As I prepare to depart from my current company in a month, I'm encountering a common data engineering challenge:
+
+- I had two months to build pipelines for staging, as well as fact and model tables for a project, which I drafted on paper (not submitted yet).
+- The team spent a month configuring dbt and related tools using terraform, and the source tables were only provided to me afterward, with minimal documentation available, except for an Excel sheet with some columns.
+- The data engineer responsible for setting up the source tables took a three-week vacation, the day after he pushed the source tables, leaving behind minimal documentation.
+
+Now, with just one month left, scarce documentation, and no stakeholder support, what would you do?",11,8,anfawave,2024-02-18 12:04:25,https://www.reddit.com/r/dataengineering/comments/1atsmdv/from_a_data_engineer_to_another/,0,False,False,False,False
+1atxo57,Athena MERGE INTO + Iceberg in AWS,"Currently using Athena to upsert data to a Iceberg table in AWS. 
+
+There are 5-20 upserts per hour using MERGE INTO query in Athena. 
+
+I am doing maintenance using a scheduled Glue job which does data rewrite, snapshot expiration, orphan file removals using [Spark Procedures](https://iceberg.apache.org/docs/latest/spark-procedures/#spark-procedures)
+
+  
+Here are the issues that I'm facing  
+\- A lot of position delete files **not** being cleared.  
+\- Remove orphan files procedure becomes very slow \[Unusable\]  
+\- [rewrite\_position\_delete\_files](https://iceberg.apache.org/docs/latest/spark-procedures/#rewrite_position_delete_files) Not supported  
+
+
+[VACUUM](https://docs.aws.amazon.com/athena/latest/ug/vacuum-statement.html) works fine compared to spark procedure for removing orphan files. But it also doesn't do [rewrite\_position\_delete\_files](https://iceberg.apache.org/docs/latest/spark-procedures/#rewrite_position_delete_files).  
+
+
+I would greatly appreciate your insights and advice.",10,5,softwaredemonlord,2024-02-18 16:14:50,https://www.reddit.com/r/dataengineering/comments/1atxo57/athena_merge_into_iceberg_in_aws/,1,False,False,False,False
+1atuvav,Blog 3 - Let's talk ADF!,"In today's blog we will talk about Azure Data Factory (ADF).
+
+**Step 1**: Short introduction about how ADF is used.
+
+ADF can be used in two of the following ways:
+
+1. As an **orchestrator**.
+2. As an **ETL tool**.
+
+The choice of how it is being used will differ with each organization. In my preparation I practiced it as an orchestrator, the reason behind it being two fold:
+
+1. Data Flows go out of the picture, thereby reducing the learning curve.
+2. PySpark does exactly that with us having a lot more control and I personally loved the idea of using my own codes for transformations than using a almost code-less GUI.
+
+How you perceive ADF amongst the two choices, I will leave it up to you guys. 
+
+**Step 2**: How to go about preparing for ADF. 
+
+1. You should first understand what ADF is.
+2. You need to understand top level concepts like Linked Services, Datasets, Activities, Pipelines, and Triggers. By this I mean you should know that such things exist and what they do.
+3. Go through the different kinds of activities available, through YouTube tutorials and Microsoft documentations. At this point you should be aware about the different activities available to us and what they do.
+4. Go through the different triggers available and understand when to use what.
+5. Learn to make your pipelines dynamic by avoiding hard-coding values in your pipelines and by using variables and parameters. This will also introduce you to a service called Key Vault.
+6. Learn about error-handling in your pipelines (different methods of error handling) and various ways to send notifications about failures (web/webhook activities using logic apps, using alerts from data studio).
+7. How to troubleshoot your pipelines, how to retain logs for different time frames, how to restart from a certain point if your pipeline fails, how to debug.
+8. What is CI/CD. How to implement CI/CD in your data factories and how to work using it, by this I mean to say you should be comfortable with: creating feature branches, publishing from main branch, creating artifacts and builds.
+9. How to integrate ADF with Databricks.
+
+**Step 3**: Resources I used to prepare
+
+1. Go through the ADF videos in [this channel](https://www.youtube.com/@TybulOnAzure), I have already shared it in my first blog, he has taught really well. At least watch his error handling video, you can ignore the CI/CD videos as I found other video more easy than that approach.
+2. Go through [this playlist](https://www.youtube.com/watch?v=Mc9JAra8WZU&list=PLMWaZteqtEaLTJffbbBzVOv9C0otal1FO). You can ignore the data flow videos if you plan to use ADF as an orchestrator. This will give a very good idea about all the points in step 2 except point 6 and 8.   
+**Tip:** He does spend a lot of time creating linked services and datasets in every video, so once you are comfortable you can just skip those parts and watch at 1.5x speed to save a lot of time.
+3. Now go through the [Microsoft documentations](https://learn.microsoft.com/en-us/azure/data-factory/) to really get in what you have learned so far. You have to skim through it, don't spend a lot of time on that.
+
+**Step 4**: Practical
+
+You can open a Azure account and practice side by side along with the tutorials. This will get a lot of hate in comments but I personally would recommend to wait a bit on this part, first understand pyspark, Azure Databricks, how to integrate with ADF, etc and then start practicing as Azure is free for only 1 month and services like Databricks will cost a bit. 
+
+I would recommend first understanding the stack, creating a rough idea about real life data flow, then opening your account and creating different projects for your learnings. 
+
+[Link To Table Of Content](https://www.reddit.com/r/dataengineering/comments/1arpamc/guiding_others_to_transition_into_azure_de_role/?utm_source=share&utm_medium=web2x&context=3)
+
+Please do let me know in comments if you have any feedback on this blog or feel I should add anything, also interactive comments helps me in understanding that people are going through this and engaging with it so it motivates me to spend the time to bring that content to you.
+
+Lastly, please do upvote the blog as it helps in reaching to other people and wider audience and tells me that people are engaging with it and need it, otherwise it'll be posting something which people don't need :)
+
+Thank You..!!",8,3,Vikinghehe,2024-02-18 14:07:25,https://www.reddit.com/r/dataengineering/comments/1atuvav/blog_3_lets_talk_adf/,0,False,False,False,False
+1atvwhu,Data Architecture,"Hi, I want to create my own data architecture with it revolving Azure tools. in my mind it will be like source > ingestion > storage > integration > visualization.. what kind of Azure tools should i use for each component? and my data processing pipeline is source > rest api > Azure function > sql server. am i in the right direction?",7,5,shinon_7652,2024-02-18 14:57:11,https://www.reddit.com/r/dataengineering/comments/1atvwhu/data_architecture/,0,False,False,False,False
+1atvon9,databricks + dbt core or dbt cloud?,"&#x200B;
+
+My team is currently in the migration our data platform from on-prem to azure cloud. Our current setup is dbt core orchestrated with airflow and we asked to move to databricks/ADF. Which of the adoption is more feasible dbt core or dbt cloud  with databricks in your opinion/experience or would you consider any other options...",6,11,Necessary-Bad1906,2024-02-18 14:47:10,https://www.reddit.com/r/dataengineering/comments/1atvon9/databricks_dbt_core_or_dbt_cloud/,0,False,False,False,False
+1au3t2l,Running Doom on Snowflake,Running Doom on random things will always amuse me. (Not my article),9,1,on_the_mark_data,2024-02-18 20:24:04,https://www.arecadata.com/running-doom-on-snowflake/,1,False,False,False,False
+1atsxpt,Seeking user-friendly data analysis tool for non-technical clients,"I've been working on streamlining data analysis for a few non-technical clients who are currently grappling with data processing using spreadsheets and third-party tools. As a developer, I'm on a quest to find a user-friendly tool that allows me to configure data pipelines, seamlessly connect with third-party tools, and visualize both the results and intermediate steps.
+
+While I appreciate the simplicity of tools like SQL and Excel, they fall short of meeting my requirements for this particular task. I'm curious to know if anyone has come across a more intuitive and easy-to-use solution that strikes the right balance between simplicity and functionality.
+
+Your insights and recommendations would be immensely valuable!",6,8,moshestv,2024-02-18 12:23:06,https://www.reddit.com/r/dataengineering/comments/1atsxpt/seeking_userfriendly_data_analysis_tool_for/,0,False,False,False,False
+1atqdps,Database Fundamentals,,6,0,youmarye,2024-02-18 09:37:03,https://tontinton.com/posts/database-fundementals,0,False,False,False,False
+1atpbay,Labs for learning Spark or Airflow,"Hi, 
+
+I'm really a newbie and trying to get into a Data Engineering field. I'm trying to learn Pyspark or Airflow and would like to know whether there is any online platform that also provides labs online to practice.
+
+Thank so much in advance ",5,6,BarberCultural4665,2024-02-18 08:23:16,https://www.reddit.com/r/dataengineering/comments/1atpbay/labs_for_learning_spark_or_airflow/,0,False,False,False,False
+1au3l53,Star Schema: How to best model nested data,"Hello there!
+
+I am currently designing a new model for our Data Warehouse (BigQuery in this case and I am leaning towards Star Schema). The structure of the problem / data for which I want to design the model for is giving me some headache though and I would love to get some opinions on it to check that I am making the best possible design.
+
+Essentially the problem is that the data consists of nested scores. Image the following structure:
+
+* Record
+   * Part A
+      * Score A
+      * Score B
+   * Part B
+      * Score C
+      * Score D
+
+In a nutshell we have a single record that is split into different parts. Each part is then scored according to some criteria (different ones for each part). The scores are then combined to a single score for a part. Then the combined scores for each part are further combined to compute a score for the entire record. The calculation of the ""combining"" might not be a simple sum, therefore it shouldn't be computed on the fly and instead already when transforming the data.
+
+To make matters worse the nesting could go deeper than this, for example Part C could consist of Part C1 and Part C2 with their own scores. Also the granularity of the parts might not be 1:1 - a record might have 2 or 3 Part D(s).
+
+As a side note, each record has an ID, which I would have put into a dimension table (there is some other metadata associated with the ID). This dimension could be connected to all parts, as it might be of interest to break down only the scores of a certain part by some of the metadata associated with that ID.
+
+I know this is probably quite tricky to work with - especially with that limited information I can give you guys, sorry. Would you also choose Star Schema or something else? If yes, would you create a fact table per Part (e.g. fact\_part\_c1) and then a fact table for each level of combination (e.g. fact\_part\_c and then fact\_record)? How would you deal with the different granularities that might exist? By pre-aggregating them to bring everything to the same granularity? Would you try to create a very large fact table, like an OBT and just work with many different columns?
+
+I know that it might be hard to answer some of this without the exact use-cases and requirements at hand but just imagine that we are actually interested in gaining a deep understanding of the different scores, therefore we might be interested to investigate and breakdown the scores only for a given part or subpart.
+
+Let me know what you would do and thank for the help in advance!",5,3,YannickAlex07,2024-02-18 20:15:14,https://www.reddit.com/r/dataengineering/comments/1au3l53/star_schema_how_to_best_model_nested_data/,1,False,False,False,False
+1atkfkl,How to manage healthcare provider data,"Does anyone in this sub work with healthcare provider data? 
+
+I started a job recently in health insurance and have been handed a project to manage/insert/update provider data for the company. Currently the whole data set is in a commercial low code data management system, that is really difficult to work with (no version control, no documentation, deployment and maintenance is a pain). Our contract for the commercial software we use is up for renewal this year and likely will not be renewed.
+
+Currently, the system we have is a data management platform. We load data from multiple internal and external sources, merge all the data into a master record, then export any updates/inserts to other internal systems.
+
+I’m new to healthcare and I am wondering if there is a platform or architecture that is commonly used to manage this type of data. The company I work for is small and I am not confident that management really knows what the industry standards are (I certainly do not). If anyone here has any experience in this domain and could point me in the right direction I would appreciate it. 
+
+Feel free to DM me as well.",6,12,Elmopo74,2024-02-18 03:26:42,https://www.reddit.com/r/dataengineering/comments/1atkfkl/how_to_manage_healthcare_provider_data/,0,False,False,False,False
+1atipxm,Questions about Databricks certifications,"I've been passively searching for a new job for the last year but in the last couple of weeks it's become a more active search. I'd like to find remote work (currently on-site and hate it), but I'm also interested in making a career shift towards data engineering and away (?) from a background as a backend software developer. Without any good way of getting professional experience with modern data engineering tools in my current role, I've started working towards certifications to bolster my résumé and learn more about the skill set required.
+
+I have a lot of experience with .NET, SQL Server, and the ""Microsoft stack"" in general but almost no experience with cloud technologies, so I thought it would be natural to start with a Microsoft Azure certification. I just passed the exam for Azure Data Engineer Associate and I am very proud and excited!
+
+I think next I would like to pursue a Databricks certification, but I am unsure which is the best fit for my interests and for the interests of potential employers. I saw a post on Medium that suggested [Databricks Certified Associate Developer for Apache Spark](https://www.databricks.com/learn/certification/apache-spark-developer-associate), but I'm wondering if [Databricks Certified Data Engineer Associate](https://www.databricks.com/learn/certification/data-engineer-associate) would be more worth my time. I am leaning towards the ""Developer for Apache Spark"" one, as it seems like it would be more suited for proving skill with developing for Spark in a general sense, but does anyone have more insight into which would be best for me?
+
+Thanks so much!",5,4,Le-Melancolique,2024-02-18 01:57:42,https://www.reddit.com/r/dataengineering/comments/1atipxm/questions_about_databricks_certifications/,0,False,False,False,False
+1atvls5,Apache Airflow + AWS,"Hi, I am a complete newbie in Data Engineering, but I have some knowledge about programming so I decided to jump into big project and I think it destroyed me at in the beggining. I have an API that takes data from steam, but I want to automate it so I decided to run this on Apache Airflow on EC2 machine. I created an instance, connected, but the first problem appeared when I wanted to initialize airflow. I have read bunch of tutorials, watched youtube videos, but every person does it different way. some of them uses airflow standalone, some airflow db init.. etc. According to Airflow Documentation I should use the version with constraints:  
+[https://airflow.apache.org/docs/apache-airflow/stable/installation/installing-from-pypi.html](https://airflow.apache.org/docs/apache-airflow/stable/installation/installing-from-pypi.html)  
+But some people use the python venv, some of them no. Can anyone provide not outdated source of information where I can learn it? Thank you very much <3",3,2,GlZM0O,2024-02-18 14:43:23,https://www.reddit.com/r/dataengineering/comments/1atvls5/apache_airflow_aws/,0,False,False,False,False
+1atyted,Do you use any tool to optimise your overall data enablement  cost?,"I work in the data team of a very large organisation and containing cloud cost is my goal for this year. We have been doing some optimisation like identifying under utilised storage/  clusters but I am exploring SaaS products which recommends optimisation  opportunities and also help assign them to respective teams. Has anyone come across a product like this? I believe pepper data , accel data , IBMs products are out there. Any thoughts on them?",3,0,Parking-Army3092,2024-02-18 17:02:12,https://www.reddit.com/r/dataengineering/comments/1atyted/do_you_use_any_tool_to_optimise_your_overall_data/,1,False,False,False,False
+1attvja,Beginner here. How do I learn by practicing? ,"Hello,
+
+I learn best when I follow along and implement projects. I have been successful learning a lot of data science through it and would’ve loved to do so at the engineering aspects. Here is an example https://sagemaker-examples.readthedocs.io/en/latest/ 
+
+
+Most of the resources I have been recommended are very theoretical. And I don’t have the luxury to practice at work. 
+
+I looked at Acloudguru and databricks academy. Both look promising. I am trying to widen the net with respect to technology so that I can pick up best practices and intuitions. 
+
+Are there other hands on guides you recommend?
+
+Thank you all. 
+",4,6,20231027,2024-02-18 13:17:07,https://www.reddit.com/r/dataengineering/comments/1attvja/beginner_here_how_do_i_learn_by_practicing/,0,False,False,False,False
+1atrusw,The DBT of AI,,4,2,FewComfort75,2024-02-18 11:16:38,https://matsmoll.github.io/posts/the-dbt-of-ai,0,False,False,False,False
+1atjppu,For loop in Delta live table,"Hi, i am new to Databricks and been having some challenges figuring out how to use for loop inside delta live table pipeline. Here’s the problem I have. Assume I create this view,
+
+@dlt.view
+def taxi_raw():
+  return spark.read.format(""json"").load(""/databricks-datasets/nyctaxi/sample/json/"")
+
+The request is to use (for loop) or any other possible way to iterate over each row and then use values from column 1 and 2 to pass them into another function. I can do it in normal notebook using collect(), but it seems collect() function is not supported in DLT. Any help or suggestions please.
+",3,6,stock_daddy,2024-02-18 02:48:04,https://www.reddit.com/r/dataengineering/comments/1atjppu/for_loop_in_delta_live_table/,1,False,False,False,False
+1atj40m,Apache datafusion question - primary use cases?,"Hi I just went through part 1 of 3 parts regarding Apache data fusion because it has come up at work. 
+
+After listening to this, however, it seems like as a query engine its primary use case is for building domain specific databases. 
+
+Is that right?
+
+https://share.highersignal.xyz/compaction/apache-arrow-datafusion-architecture-part-1",3,1,Double-Code1902,2024-02-18 02:17:07,https://www.reddit.com/r/dataengineering/comments/1atj40m/apache_datafusion_question_primary_use_cases/,1,False,False,False,False
+1au3vk2,Question on Roles in PostgreSql,"Hello, I am trying to implement a role based auth system to connecting to a PostgreSql DB system. I have routine functions and triggers that I created that perform select statements and such on the database. How do I create a Role that can only perform the actions in the Executable Functions, while also not having general Select functions on the table? I originally gave the role execute only permissions, but they give a permission error since the functions require a select  statement on certain tables.
+
+
+Thank you!",2,2,scuffed12s,2024-02-18 20:26:47,https://www.reddit.com/r/dataengineering/comments/1au3vk2/question_on_roles_in_postgresql/,1,False,False,False,False
+1au1jn0,data engineering zoomcamp - docker session,"Hi guys, I am trying to follow the zoomcamp and already getting stuck with the first video. 
+
+I understand Linux is an OS. There are 2 ways I can install on top of window os - hypervisor or partition. 
+
+I watched an hour video on Docker. I understood the concept. 
+
+&#x200B;
+
+Now on the implementation, what should be the step? 
+
+1. like what to do install? how to install?
+2. can i use docker desktop? 
+
+thanks a lot guys!!!!! 
+
+&#x200B;
+
+You may be interested in Data Engineering Zoomcamp from Data Talks Club. It's free. Come joint the fun! [https://github.com/DataTalksClub/data-engineering-zoomcamp](https://github.com/DataTalksClub/data-engineering-zoomcamp) ",2,5,themagnificent1906,2024-02-18 18:53:00,https://www.reddit.com/r/dataengineering/comments/1au1jn0/data_engineering_zoomcamp_docker_session/,1,False,False,False,False
+1atwofy,Junior Data Engineer needs urgent advice,"Hello everybody,
+
+I happen to be stuck on an awful position at my workplace right now. Our data engineering / data science / data analytics team, has lost a not experienced senior engineer. Now I'm stuck as the only ""real"" junior engineer with two other juniors with one year experience. 
+
+Anyways I'm also clueless and seek professional advice, because I only read bad things about Talend.
+
+Our company right now uses several MSSQL on premise databases, hosted on a local server. We have implemented an EL inside of mssql, loading incrementally from a Microsoft Navision Databases directly into our DWH. There's a small SSIS package we use to trigger the incremental load process. Else we also developed a couple python scripts for certain requirements/reports, but most of the transformation is made inside of mssql as stored procedures. Else we use Tableau & Excel as the visual tool / reporting tool. Tableau contract will be terminated, because of the new high pricing There's a lot of shit made by the predeccesors and we spend a lot of time maintaining all the instable processes.
+
+Our next task is to move to the cloud, because of reasons. 
+
+We are also getting pressure from the head quarters, which has no internal technical engineers and is only kept together by external service provider. So I'm questioning the competence of the further upcomming decisions, since the job of external service providers is getting as much money as possible from a customer. Additionally they are trying to sell Talend as an ETL-Tool right now and Quicksight as a Visulisation Tool.
+
+Long text, short question:   
+How would you proceed with the migration of an old MSSQL DWH to the Cloud (AWS/Azure) and which tools would you suggest using, to build a stable & good DWH. And how can we prevent damage caused by bad decisions.",2,7,IamCoolerThanYoux3,2024-02-18 15:31:40,https://www.reddit.com/r/dataengineering/comments/1atwofy/junior_data_engineer_needs_urgent_advice/,0,False,False,False,False
+1au5lfg,Creating a Glue/Pyspark function to get latest partition from a S3 bucket,"Hello everyone! Can you please help me with this issue?   
+
+I'm dealing with data that is partitioned in the format of ""s3://bucket/folder1/.../folder4/year= 2024/month=2/day=18/"" and I'm trying to create a python/pyspark function to return me the latest year, month and day or the full path of the latest partition, but it's being too hard to get it to work properly.   
+
+Has anyone done this before? Can you give me any tips? I could create a function to return the latest partition when it was like ""snap=2024\_2\_18"" but when it has subfolders it's getting messy.   
+
+Thank you so much for your help. ",1,1,IWantAGoodBattery,2024-02-18 21:35:55,https://www.reddit.com/r/dataengineering/comments/1au5lfg/creating_a_gluepyspark_function_to_get_latest/,1,False,False,False,False
+1atx7ld,Dimensional Modeling/ Star Schema,"Attributes like Ordered Date, Due Date and Ship Date will that go on Accumulating Fact Table or Dimensional Table ?",1,1,Accomplished-Ad-2407,2024-02-18 15:55:18,https://www.reddit.com/r/dataengineering/comments/1atx7ld/dimensional_modeling_star_schema/,1,False,False,False,False
+1athjdm,some advice about data,"Hello everyone,
+
+I'm currently going to school for rangeland sciences, and I am interested in learning more about GIS, specifically to utilize the program. I honestly can't wrap my head around the theories and concepts my class is currently discussing XD. But I can through repetition use gis to create the things to bring environmental data to live on a map(at least that is how I see myself utilizing it). But my question is what is the best way to (I don't even really know how to say this) create the data used in the program. Excell, Acess, R-programing? 
+
+I was never really much good at programming, and I utilized excell while in the military and found out it can be an extremely powerful tool. So I thought to ask you all for some advice since data never really was my strong suit, but I need to be able to navigate to an extent. 
+
+&#x200B;
+
+Best,
+
+Jacob",1,5,jmcdougal117,2024-02-18 00:58:37,https://www.reddit.com/r/dataengineering/comments/1athjdm/some_advice_about_data/,1,False,False,False,False
