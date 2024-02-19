@@ -12,8 +12,9 @@
 [![PySpark](https://img.shields.io/badge/PySpark-green.svg)](https://spark.apache.org/docs/latest/api/python/index.html)
 [![API](https://img.shields.io/badge/API-red.svg)](https://aws.amazon.com/what-is/api/#:~:text=API%20stands%20for%20Application%20Programming,other%20using%20requests%20and%20responses.)
 
+This project offers a robust data pipeline solution designed to efficiently extract, transform, and load (ETL) Reddit data into a Redshift data warehouse. Leveraging a blend of industry-standard tools and services, the pipeline ensures seamless data processing and integration. 
 
-This project offers a robust data pipeline solution designed to efficiently extract, transform, and load (ETL) Reddit data into a Redshift data warehouse. Leveraging a blend of industry-standard tools and services, the pipeline ensures seamless data processing and integration.
+This project covers the process of connecting Apache Airflow to a Reddit instance in the cloud. [PRAW: the Python Reddit API Wrapper](https://praw.readthedocs.io/en/stable/) was leveraged and injected with Reddit API credentials to extract subreddit posts and metadata from the Reddit app, which was integrated into the Airflow setup. The airflow environment was configured with a Celery backend and PostgreSQL for efficient task management and data storage. The Reddit data within Airflow was transferred to an S3 bucket. AWS Glue was utilized for data manipulation before querying and visualizing the data with Amazon Athena. Additionally, a data warehouse was set up on AWS using Amazon Redshift to demonstrate real-time data loading.
 
 ## Overview
 This pipeline is structured to accomplish the following tasks:
@@ -41,6 +42,7 @@ This pipeline is structured to accomplish the following tasks:
 - Installation of __Postman__ to confirm if the Reddit API credentials are working properly. You can follow the detailed [video](https://www.youtube.com/watch?v=x9boO9x3TDA) to validate your credentials.
 - Installation of __Docker__.
 - Python version 3.9 or higher.
+- Understanding of __PRAW: the Python Reddit API Wrapper__.
   
 # Important Learnings:
 - A __Docker container__ is a self-contained, runnable software application or service. On the other hand, a __Docker image__ is the template loaded onto the container to run it, like a set of instructions. You store images for sharing and reuse, but you create and destroy containers over an application's lifecycle.
