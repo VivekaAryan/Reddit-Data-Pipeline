@@ -43,6 +43,12 @@ This pipeline is structured to accomplish the following tasks:
 - Installation of __Docker__.
 - Python version 3.9 or higher.
 - Understanding of __PRAW: the Python Reddit API Wrapper__.
+
+## Contribution
+Contributions, suggestions, and bug reports are welcome! Please follow the standard GitHub practices for pull requests and issue tracking.
+
+## License
+This project is licensed under the MIT License.
   
 # Important Learnings:
 - A __Docker container__ is a self-contained, runnable software application or service. On the other hand, a __Docker image__ is the template loaded onto the container to run it, like a set of instructions. You store images for sharing and reuse, but you create and destroy containers over an application's lifecycle.
