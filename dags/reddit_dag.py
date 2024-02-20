@@ -11,7 +11,7 @@ from pipelines.reddit_pipeline import reddit_pipeline
 
 default_args = {
     'owner': 'Vivek Aryan',
-    'start_date': datetime(2024, 2, 14)
+    'start_date': datetime(2019, 2, 14)
 }
 
 file_postfix = datetime.now().strftime("%Y%m%d")
@@ -31,9 +31,9 @@ extract = PythonOperator(
     python_callable=reddit_pipeline,
     op_kwargs={
         'file_name': f'reddit_{file_postfix}',
-        'subreddit': 'dataengineering',
-        'time_filter': 'day',
-        'limit': 100
+        'subreddit': 'science+politics+technology+relationships',
+        'time_filter': 'all',
+        'limit': 5000
     },
     dag=dag
 )

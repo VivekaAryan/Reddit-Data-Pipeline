@@ -4,7 +4,7 @@ from etls.reddit_etl import connect_reddit, extract_posts, transform_data, load_
 from utils.constants import CLIENT_ID, SECRET, OUTPUT_PATH
 
 
-def reddit_pipeline(file_name: str, subreddit: str, time_filter='day', limit=None):
+def reddit_pipeline(file_name: str, subreddit: str, time_filter='all', limit=None):
     # connecting to reddit instance
     instance = connect_reddit(CLIENT_ID, SECRET, 'subreddit scraper')
     # extraction
