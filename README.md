@@ -26,7 +26,7 @@ This pipeline is structured to accomplish the following tasks:
 
 ## Architecture
 
-![Retrospectives - Reddit Data Engineering - Pipeline (1)](https://github.com/VivekaAryan/Reddit-Data-Pipeline/assets/52493029/8ff990ad-41be-47d8-b570-3dd3c1b0d047)
+![Retrospectives - Reddit Data Engineering - Pipeline (2)](https://github.com/VivekaAryan/Reddit-Data-Pipeline/assets/52493029/f5a41578-c7bd-4573-bdb3-e1c48aa88e5b)
 
 - __Apache Airflow__: The pipeline orchestrator for scheduling and managing ETL workflows.
 - __Celery__: Facilitates distributed task execution, enhancing scalability and performance.
