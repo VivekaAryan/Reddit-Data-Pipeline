@@ -156,11 +156,24 @@ The ```config.conf``` file is used to centralize configuration settings for an a
 #### 2.3. Create constants.py
 This script reads the ```config.conf``` fiel to get necessary configuration setting and sets these setting as variables that can be used in othe rparts of the project. This provides easy access to configuration values, which helps in managing and updating the configuration without changing the code.
 
+#### 2.4 Write ```reddit_etl.py```
+This script defines a series of functions to connect to Reddit using the PRAW (Python Reddit API Wrapper) library, extract posts from specified subreddits, transform the extracted data into a structured format using pandas, and load the data into a CSV file. This ETL (Extract, Transform, Load) process is essential for gathering and preparing Reddit data for analysis or further processing. This structured approach enables efficient data collection and preparation, facilitating the use of Reddit data in various data science and analysis tasks.
+
+#### 2.5 Write Reddit pipeline (```reddit_pipeline.py```)
+The reddit_pipeline function orchestrates the process of extracting, transforming, and loading data from Reddit. It connects to Reddit using provided credentials, extracts posts from a specified subreddit, transforms the data into a suitable format, and saves the data as a CSV file. This function simplifies the process of gathering and preparing Reddit data for analysis or further processing, making it a reusable component in data workflows.
 
 
+### 3. Build Reddit Data Pipeline with AWS
+#### 3.1. Creating an S3 bucket
+Amazon S3 (Simple Storage Service) is a scalable object storage service provided by Amazon Web Services (AWS). It allows you to store and retrieve any amount of data at any time, making it ideal for a wide range of use cases, including backup and restore, disaster recovery, data archives, and content distribution. To begin using S3, you first need to create an S3 bucket, which acts as a container for storing your objects (files and data).
 
+#### 3.2. Write ```aws_etl.py```
+This script provides functions to connect to an Amazon S3 bucket, check if a bucket exists (and create it if it doesn't), and upload a file to the bucket using the s3fs library. The functions utilize AWS credentials stored in constants and handle exceptions to ensure smooth execution.
 
+#### 3.3. Write AWS Pipeline (```aws_s3_pipeline.py```)
+The upload_s3_pipeline function defines a pipeline to upload a file to an AWS S3 bucket. It pulls the file path from a previous Airflow task, connects to S3, ensures the target bucket exists, and uploads the file to the bucket. This function facilitates the integration of data pipelines with cloud storage, allowing for scalable and reliable data management.
 
+After these are set up, trigger the dag once again for the whole ETL pipeline to run from extracting posts from subreddit, saving the data in a CSV file after transforming the data and loading the data in CSV. The second dag should take the csv and push it to AWS S3 bucket for storing on the cloud.
 
 ## Contribution
 Contributions, suggestions, and bug reports are welcome! Please follow the standard GitHub practices for pull requests and issue tracking.

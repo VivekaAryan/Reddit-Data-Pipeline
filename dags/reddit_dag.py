@@ -19,9 +19,9 @@ file_postfix = datetime.now().strftime("%Y%m%d")
 dag = DAG(
     dag_id='etl_reddit_pipeline',
     default_args=default_args,
-    schedule_interval='@daily',
-    catchup=False,
-    tags=['reddit', 'etl', 'pipeline']
+    schedule_interval='@daily',             # @daily means it runs once a day
+    catchup=False,                          # When set to False, it prevents Airflow from running backfilling tasks for past dates.
+    tags=['reddit', 'etl', 'pipeline']      # Tags to categorize and filter the DAG.
 )
 
 # DAG 1: Extraction from reddit
