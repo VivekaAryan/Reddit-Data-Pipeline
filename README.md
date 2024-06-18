@@ -47,9 +47,12 @@ This pipeline is structured to accomplish the following tasks:
 
 ## Detailed Workflow
 ### 1. Setting up Apache Airflow with Celery Backend and Postgres
+
+#### 1.1. Create ```docker-compose.yaml``` file
+
 Create a ```docker-compose.yaml``` file to define, configure, and manage multi-container Docker application. The file sets up a complete Apache Airflow environment with PostgreSQL and Redis as dependencies, and defines various services for initializing, running the webserver, scheduler, and worker processes. This setup is useful for orchestrating complex workflows and data pipelines using Airflow.
 
-#### 1.1. YAML Anchor
+__YAML Anchor__: <br>
 Defines a common configuration for Airflow services. This helps avoid duplication by allowing the same configuration to be referenced in multiple places. The key elements are:
 
 - ```build```: Specifies the build context and Dockerfile for building the custom Airflow image.
@@ -58,7 +61,7 @@ Defines a common configuration for Airflow services. This helps avoid duplicatio
 - ```volumes```: Mounts directories from the host machine to directories within the Airflow container.
 - ```depends_on```: Specifies that the Airflow services depend on the PostgreSQL and Redis services.
 
-#### 1.2. Services
+__Services__:<br>
 This section defines various services using Docker images. Each service represents a container. Services include:
 
 - ```postgres```: PostgreSQL database container with environment variables for user, password, database name, and port mapping.
@@ -85,6 +88,48 @@ A brief on the tools used:
         - __Task Execution__: Celery workers pick up tasks from the Redis queue, execute them, and then report the results back to the PostgreSQL database.
         - __Concurrency__: Multiple Celery workers can run in parallel, each capable of executing different tasks simultaneously, thus improving the throughput of the Airflow system.
         - __Fault Tolerance__: Celery handles task retries and failures, providing robustness to the workflow execution. If a worker fails to execute a task, Celery can reassign the task to another worker.
+
+#### 1.2. Create ```Dockerfile``` file
+This Dockerfile is used to build a custom Apache Airflow image with specific dependencies. Here's a brief summary of each step:
+
+- __Base Image__: Starts with the official Apache Airflow image, version 2.7.1 with Python 3.11.
+- __Copy Dependencies__: Copies the requirements.txt file from the local directory to the Airflow directory in the container.
+- __Install System Packages__: Switches to the root user, updates package lists, and installs gcc and python3-dev to compile and build Python packages.
+- __Switch User__: Switches back to the airflow user to follow security best practices.
+- __Install Python Packages__: Installs the Python packages listed in requirements.txt using pip.
+
+This setup ensures that the custom Airflow environment has all the necessary dependencies and configurations to run your workflows efficiently.
+
+#### 1.2. Create ```airflow.env``` file
+This environment file is crucial for configuring an Apache Airflow deployment with CeleryExecutor, using Redis as a message broker and PostgreSQL as both the result backend and metadata database. The configurations ensure secure storage of sensitive data and appropriate logging levels, while also preventing unnecessary example DAGs from being loaded.
+
+Here's a summary of each variable:
+
+- ```AIRFLOW__CORE__EXECUTOR=CeleryExecutor```<br>
+    Sets the executor type to CeleryExecutor, enabling distributed task execution using Celery.
+
+- ```AIRFLOW__CELERY__BROKER_URL=redis://redis:6379/0```<br>
+    Specifies the URL for the Celery message broker. In this case, it's using Redis running on the redis service, accessible at port 6379 and database 0.
+    
+- ```AIRFLOW__CELERY__RESULT_BACKEND=db+postgresql://postgres@postgres:5432/airflow_reddit```<br>
+    Sets the result backend for Celery to a PostgreSQL database. This URL points to a PostgreSQL database named airflow_reddit hosted on the postgres service, with postgres as both the username and password.
+
+- ```AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=postgresql+psycopg2://postgres@postgres:5432/airflow_reddit```<br>
+    Configures the SQLAlchemy connection string for the Airflow metadata database. It uses PostgreSQL with the psycopg2 driver, connecting to the airflow_reddit database with postgres as the username and password.
+
+- ```AIRFLOW__CORE__FERNET_KEY=46BKJoQYlPPOexq0OhDZnIlNepKFf87WFwLbfzqDDho=```<br>
+    Provides the Fernet key for encrypting sensitive data in the Airflow metadata database. Fernet encryption is used to securely store connection credentials.
+
+- ```AIRFLOW__CORE__LOGGING_LEVEL=INFO```<br>
+    Sets the logging level to INFO, which controls the verbosity of Airflow's logging output.
+
+- ```AIRFLOW__CORE__LOAD_EXAMPLES=False```<br>
+    Disables the loading of example DAGs. By setting this to False, Airflow won't load the example workflows, keeping the environment clean and focused on user-defined DAGs.
+
+
+
+
+
 
 
 
