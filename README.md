@@ -126,6 +126,35 @@ Here's a summary of each variable:
 - ```AIRFLOW__CORE__LOAD_EXAMPLES=False```<br>
     Disables the loading of example DAGs. By setting this to False, Airflow won't load the example workflows, keeping the environment clean and focused on user-defined DAGs.
 
+After these are created, test if all the services are correctly setup by running the following command in the terminal:
+```bash
+docker compose up -d --build
+```
+Note: Make sure docker desktop is already running.
+
+### 2. Build Reddit Data Pipeline with Airflow
+#### 2.1 Define an Airflow DAG for orchestrating ETL
+Once set up is finished, define an Apache Airflow Directed Acyclic Graph (DAG)in the ```dag``` folder for orchestrating a two-step ETL (Extract, Transform, Load) pipeline. The tasks are scheduled to run daily, ensuring the ETL pipeline is executed on a regular basis, with proper handling of task dependencies and configurations. 
+
+- __Dag 1:__<br>
+ __Extracts data from specified subreddits__ using the ```reddit_pipeline``` function, which connects to Reddit, extracts posts, transforms the data, and saves it as a CSV file.
+
+- __Dag 2:__<br>
+__Uploads the extracted data to AWS S3__ using the ```upload_s3_pipeline``` function.
+
+In the end write a task dependency:
+
+```Python
+extract >> upload_s3
+```
+
+This mean that the upload_s3 task will only run after the extract task has successfully completed.
+
+#### 2.2 Setup ```Config.conf```
+The ```config.conf``` file is used to centralize configuration settings for an application, making it easier to manage and change parameters without altering the code. This file is particularly useful in environments where settings need to be easily adjustable, such as development, testing, and production. In the project we store Database Configurations, File Paths, Reddit credentials, AWS credentials and etl settings.
+
+#### 2.3. Create constants.py
+This script reads the ```config.conf``` fiel to get necessary configuration setting and sets these setting as variables that can be used in othe rparts of the project. This provides easy access to configuration values, which helps in managing and updating the configuration without changing the code.
 
 
 
