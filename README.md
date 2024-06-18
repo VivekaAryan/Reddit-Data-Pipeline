@@ -44,6 +44,50 @@ This pipeline is structured to accomplish the following tasks:
 - Python version 3.9 or higher.
 - Understanding of __PRAW: the Python Reddit API Wrapper__.
 
+
+## Detailed Workflow
+### 1. Setting up Apache Airflow with Celery Backend and Postgres
+Create a ```docker-compose.yaml``` file to define, configure, and manage multi-container Docker application. The file sets up a complete Apache Airflow environment with PostgreSQL and Redis as dependencies, and defines various services for initializing, running the webserver, scheduler, and worker processes. This setup is useful for orchestrating complex workflows and data pipelines using Airflow.
+
+#### 1.1. YAML Anchor
+Defines a common configuration for Airflow services. This helps avoid duplication by allowing the same configuration to be referenced in multiple places. The key elements are:
+
+- ```build```: Specifies the build context and Dockerfile for building the custom Airflow image.
+- ```image```: Specifies the custom Airflow image to use.
+- ```env_file```: Specifies the environment file to use for Airflow.
+- ```volumes```: Mounts directories from the host machine to directories within the Airflow container.
+- ```depends_on```: Specifies that the Airflow services depend on the PostgreSQL and Redis services.
+
+#### 1.2. Services
+This section defines various services using Docker images. Each service represents a container. Services include:
+
+- ```postgres```: PostgreSQL database container with environment variables for user, password, database name, and port mapping.
+- ```redis```: Redis database container with port mapping.
+- ```airflow-init```: Initializes Airflow by installing dependencies, initializing the database, and starting Airflow. It uses the common configuration defined by the YAML anchor.
+- ```airflow-webserver```: Runs the Airflow webserver, exposing it on port 8080. Uses the common configuration.
+- ```airflow-scheduler```: Runs the Airflow scheduler, using the common configuration.
+- ```airflow-worker```: Runs an Airflow worker using Celery, with the common configuration.
+
+A brief on the tools used:
+- __Redis__: Redis (Remote Dictionary Server) is an open-source, in-memory data structure store that can be used as a database, cache, and message broker. 
+    - __Utilization__:
+        - __Task Queue Management__: When using CeleryExecutor, Airflow uses Redis to queue tasks that need to be executed by workers. Redis handles the messages (tasks) efficiently due to its in-memory nature, allowing quick enqueue and dequeue operations.
+        - __Scalability__: Redis helps in scaling the task execution by distributing tasks among multiple worker nodes. As tasks are queued in Redis, they can be pulled and executed by any available worker.In the project, Redis was used as a message broker to manage communication between different components of the Airflow system.
+
+- __PostgreSQL__: PostgreSQL is a powerful, open-source, object-relational database system. In Airflow, PostgreSQL is typically used as the metadata database to store information about the state of tasks, workflows, users, and other operational data necessary for Airflow's functioning.
+    - __Utilization__:
+        - __State Management__: All state information about DAGs (Directed Acyclic Graphs), task instances, and their execution status are stored in the PostgreSQL database. This includes scheduling information, task start and end times, and execution results.
+        - __User Management__: PostgreSQL stores user data and access control information, including user roles and permissions.
+        - __Configuration Storage__: Various configuration settings and connections (to external systems) defined in Airflow are also stored in the PostgreSQL database.
+
+- __Celery__: Celery is an open-source, distributed task queue system. It is designed to handle the execution of tasks asynchronously, allowing for scalable and distributed processing. Celery is often used in conjunction with message brokers like Redis or RabbitMQ and a results backend like PostgreSQL to manage and coordinate task execution.
+    - __Utilization__:
+        - __Task Execution__: Celery workers pick up tasks from the Redis queue, execute them, and then report the results back to the PostgreSQL database.
+        - __Concurrency__: Multiple Celery workers can run in parallel, each capable of executing different tasks simultaneously, thus improving the throughput of the Airflow system.
+        - __Fault Tolerance__: Celery handles task retries and failures, providing robustness to the workflow execution. If a worker fails to execute a task, Celery can reassign the task to another worker.
+
+
+
 ## Contribution
 Contributions, suggestions, and bug reports are welcome! Please follow the standard GitHub practices for pull requests and issue tracking.
 
@@ -57,10 +101,10 @@ This project is licensed under the MIT License.
 - A __Docker container__ is a self-contained, runnable software application or service. On the other hand, a __Docker image__ is the template loaded onto the container to run it, like a set of instructions. You store images for sharing and reuse, but you create and destroy containers over an application's lifecycle.
 
 - ```touch``` is commonly used in Unix-based systems (such as Linux or macOS) to create empty files or update file timestamps. In Windows, you can achieve the same functionality by creating an empty file using
-```
-NUL > airflow.env
-NUL > docker-compose.yml
-NUL > Dockerfile
-```
+    ```
+    NUL > airflow.env
+    NUL > docker-compose.yml
+    NUL > Dockerfile
+    ```
 
 - The ```docker-compose.yml``` file is used to define and run multiple Docker containers as services that collectively make up an __Apache Airflow__ environment along with __PostgreSQL__ and __Redis databases__.
