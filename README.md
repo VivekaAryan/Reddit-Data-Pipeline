@@ -100,7 +100,7 @@ This Dockerfile is used to build a custom Apache Airflow image with specific dep
 
 This setup ensures that the custom Airflow environment has all the necessary dependencies and configurations to run your workflows efficiently.
 
-#### 1.2. Create ```airflow.env``` file
+#### 1.3. Create ```airflow.env``` file
 This environment file is crucial for configuring an Apache Airflow deployment with CeleryExecutor, using Redis as a message broker and PostgreSQL as both the result backend and metadata database. The configurations ensure secure storage of sensitive data and appropriate logging levels, while also preventing unnecessary example DAGs from being loaded.
 
 Here's a summary of each variable:
@@ -167,6 +167,16 @@ The reddit_pipeline function orchestrates the process of extracting, transformin
 #### 3.1. Creating an S3 bucket
 Amazon S3 (Simple Storage Service) is a scalable object storage service provided by Amazon Web Services (AWS). It allows you to store and retrieve any amount of data at any time, making it ideal for a wide range of use cases, including backup and restore, disaster recovery, data archives, and content distribution. To begin using S3, you first need to create an S3 bucket, which acts as a container for storing your objects (files and data).
 
+- __Access Control__: <br>
+Integrates with AWS Identity and Access Management (IAM) to manage user and application permissions.
+
+- __How to Create an S3 Bucket using the AWS Management Console__:<br>
+    - __Open the S3 Console__: Navigate to the S3 service in the AWS Management Console.
+    - __Create a Bucket__: Click on "Create bucket" and provide a unique name for your bucket. Choose the desired AWS Region where you want to create the bucket.
+    - __Configure Options__: Set options such as versioning, server access logging, and tags as per your requirements.
+    - __Set Permissions__: Configure bucket policies and permissions to control access. You can set public access settings, manage IAM roles, and configure ACLs.
+    - __Create__: Review the settings and click "Create bucket".
+
 #### 3.2. Write ```aws_etl.py```
 This script provides functions to connect to an Amazon S3 bucket, check if a bucket exists (and create it if it doesn't), and upload a file to the bucket using the s3fs library. The functions utilize AWS credentials stored in constants and handle exceptions to ensure smooth execution.
 
@@ -174,6 +184,59 @@ This script provides functions to connect to an Amazon S3 bucket, check if a buc
 The upload_s3_pipeline function defines a pipeline to upload a file to an AWS S3 bucket. It pulls the file path from a previous Airflow task, connects to S3, ensures the target bucket exists, and uploads the file to the bucket. This function facilitates the integration of data pipelines with cloud storage, allowing for scalable and reliable data management.
 
 After these are set up, trigger the dag once again for the whole ETL pipeline to run from extracting posts from subreddit, saving the data in a CSV file after transforming the data and loading the data in CSV. The second dag should take the csv and push it to AWS S3 bucket for storing on the cloud.
+
+## AWS Analytics Workflow
+Amazon Web Services (AWS) offers a comprehensive suite of analytics services designed to help organizations extract valuable insights from their data. These services are built to handle large-scale data workloads, offering capabilities for data ingestion, storage, processing, analysis, visualization, and machine learning.
+
+- __Amazon Redshift__: <br>
+
+    - __Description__: A fully managed, petabyte-scale data warehouse service that makes it simple and cost-effective to analyze all your data using SQL and business intelligence tools.
+    - __Use Case__: Data warehousing, large-scale data analytics, and running complex queries across large datasets.
+
+### AWS Glue
+
+AWS Glue is a fully managed Extract, Transform, and Load (ETL) service provided by Amazon Web Services (AWS). It simplifies and automates the process of discovering, preparing, and integrating data for analytics, machine learning, and application development. AWS Glue allows you to transform raw data into meaningful insights by seamlessly extracting data from various sources, transforming it to meet business needs, and loading it into data stores for further analysis.
+
+__Use Cases__: Data Integration, Data Preparation and transformation, data migration, real-time and batch processing.
+
+#### How AWS Glue Works
+- __Data Discovery and Cataloging:__ <br>
+
+    - __Glue Crawlers__: Automatically scan your data sources, extract schema information, and populate the Glue Data Catalog with metadata.
+
+- __ETL Script Generation:__ <br>
+
+    - __Glue Studio and Script Editor__: Generate ETL scripts using the visual editor or script editor, with built-in transformations and the ability to write custom code.
+
+- __Job Execution:__ <br>
+
+    - __Glue Jobs__: Run your ETL jobs on a fully managed Apache Spark environment. AWS Glue handles job scheduling, monitoring, and retry logic.
+
+- __Data Transformation:__ <br>
+
+    - __Transforms and Connectors__: Use pre-built transforms and connectors to process and move data between different formats and destinations.
+
+- __Data Loading:__ <br>
+
+    - __Load Data__: Load transformed data into target data stores, such as Amazon S3, Redshift, RDS, or DynamoDB, for further analysis or machine learning.
+
+__Once the ETL is done in GLUE, the preview option will take us to AWS Athena.__ 
+
+### Amazon Athena
+
+Amazon Athena is an interactive query service provided by Amazon Web Services (AWS) that allows you to analyze data directly in Amazon Simple Storage Service (Amazon S3) using standard SQL. It is serverless, meaning you don’t need to manage any infrastructure, and you only pay for the queries you run. Athena is built on the open-source framework Presto and integrates seamlessly with other AWS services, making it a powerful tool for data analysis.
+
+Integrates with AWS Glue to automatically catalog data, providing a centralized metadata repository. This allows you to easily discover and manage your datasets.
+
+__Use Cases__: Ad-Hoc Data Exploration, Log Analysis, Data Lake Queries, Business Intelligence, Machine Learning.
+
+### AWS Redshift
+Amazon Redshift is a fully managed, petabyte-scale data warehouse service in the cloud. It allows you to run complex queries and perform analytics on large datasets quickly and cost-effectively. Redshift integrates with various business intelligence (BI) and data visualization tools, making it a powerful solution for enterprise data warehousing, analytics, and reporting.
+
+- __Integration with AWS Ecosystem:__ <br>
+
+    - __Data Integration__: Seamlessly integrates with various AWS services like Amazon S3, AWS Glue, Amazon EMR, Amazon RDS, and more.
+    - __BI Tools__: Compatible with popular BI and analytics tools like Tableau, Looker, Amazon QuickSight, and Microsoft Power BI.
 
 ## Contribution
 Contributions, suggestions, and bug reports are welcome! Please follow the standard GitHub practices for pull requests and issue tracking.
