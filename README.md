@@ -188,11 +188,6 @@ After these are set up, trigger the dag once again for the whole ETL pipeline to
 ## AWS Analytics Workflow
 Amazon Web Services (AWS) offers a comprehensive suite of analytics services designed to help organizations extract valuable insights from their data. These services are built to handle large-scale data workloads, offering capabilities for data ingestion, storage, processing, analysis, visualization, and machine learning.
 
-- __Amazon Redshift__: <br>
-
-    - __Description__: A fully managed, petabyte-scale data warehouse service that makes it simple and cost-effective to analyze all your data using SQL and business intelligence tools.
-    - __Use Case__: Data warehousing, large-scale data analytics, and running complex queries across large datasets.
-
 ### AWS Glue
 
 AWS Glue is a fully managed Extract, Transform, and Load (ETL) service provided by Amazon Web Services (AWS). It simplifies and automates the process of discovering, preparing, and integrating data for analytics, machine learning, and application development. AWS Glue allows you to transform raw data into meaningful insights by seamlessly extracting data from various sources, transforming it to meet business needs, and loading it into data stores for further analysis.
